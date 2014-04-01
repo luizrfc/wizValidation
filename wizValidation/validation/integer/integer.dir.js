@@ -1,8 +1,4 @@
-﻿angular.module('wiz.validation', [
-	'wiz.validation.integer'
-]);
-angular.module('wiz.validation.integer', []);
-angular.module('wiz.validation.integer')
+﻿angular.module('wiz.validation.integer')
 
 .directive('wizValidInteger', ['$http', function ($http) {
 	return {

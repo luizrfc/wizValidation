@@ -5,7 +5,10 @@
 </head>
 <body ng-controller="HomeCtrl">
 
-	{{message}}
+	<form name="demoForm">
+		<input type="number" name="integer" ng-model="demo.integer" wiz-valid-integer/>
+		Invalid: {{demoForm.integer.$error.wizInteger}}
+	</form>
 
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
 
