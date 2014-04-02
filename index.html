@@ -30,6 +30,10 @@
 			Decimal:
 			<input type="number" name="decimal" ng-model="demo.decimal" wiz-valid-decimal ng-class="{invalid: demoForm.decimal.$error.wizDecimal}" />
 		</label>
+		<label>
+			Postcode:
+			<input type="text" name="postcode" ng-model="demo.postcode" wiz-valid-postcode ng-class="{invalid: demoForm.postcode.$error.wizPostcode}" />
+		</label>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
 	<script src="app/libs/wizValidation/wizValidation.js"></script>

@@ -1,6 +1,6 @@
-﻿angular.module('wiz.validation.decimal')
+﻿angular.module('wiz.validation.postcode')
 
-.directive('wizValidDecimal', function () {
+.directive('wizValidPostcode', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -17,8 +17,8 @@
 			});
 
 			function validate(value) {
-				var valid = /^-?([0-9]+(\.[0-9]+))$/.test(value);
-				ngModel.$setValidity('wizDecimal', valid);
+				var valid = /^\b(GIR ?0AA|SAN ?TA1|(?:[A-PR-UWYZ](?:\d{0,2}|[A-HK-Y]\d|[A-HK-Y]\d\d|\d[A-HJKSTUW]|[A-HK-Y]\d[ABEHMNPRV-Y])) ?\d[ABD-HJLNP-UW-Z]{2})\b$/i.test(value);
+				ngModel.$setValidity('wizPostcode', valid);
 				return value;
 			}
 		}
