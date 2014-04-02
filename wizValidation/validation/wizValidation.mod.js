@@ -2,5 +2,6 @@
 	'wiz.validation.integer',
 	'wiz.validation.decimal',
 	'wiz.validation.postcode',
-	'wiz.validation.zipcode'
+	'wiz.validation.zipcode',
+	'wiz.validation.phone'
 ]);

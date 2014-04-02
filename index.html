@@ -38,6 +38,10 @@
 			Zipcode:
 			<input type="text" name="zipcode" ng-model="demo.zipcode" wiz-valid-zipcode ng-class="{invalid: demoForm.zipcode.$error.wizZipcode}" />
 		</label>
+		<label>
+			Phone:
+			<input type="text" name="phone" ng-model="demo.phone" wiz-valid-phone ng-class="{invalid: demoForm.phone.$error.wizPhone}" />
+		</label>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
 	<script src="app/libs/wizValidation/wizValidation.js"></script>
