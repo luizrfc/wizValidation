@@ -8,7 +8,7 @@
 angular.module('wiz.validation.integer', []);
 angular.module('wiz.validation.integer')
 
-.directive('wizValidInteger', function () {
+.directive('wizValInteger', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -26,7 +26,7 @@ angular.module('wiz.validation.integer')
 
 			function validate(value) {
 				var valid = /^-?[0-9]+$/.test(value);
-				ngModel.$setValidity('wizInteger', valid);
+				ngModel.$setValidity('wizValInteger', valid);
 				return value;
 			}
 		}
@@ -35,7 +35,7 @@ angular.module('wiz.validation.integer')
 angular.module('wiz.validation.decimal', []);
 angular.module('wiz.validation.decimal')
 
-.directive('wizValidDecimal', function () {
+.directive('wizValDecimal', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -53,7 +53,7 @@ angular.module('wiz.validation.decimal')
 
 			function validate(value) {
 				var valid = /^-?([0-9]+(\.[0-9]+))$/.test(value);
-				ngModel.$setValidity('wizDecimal', valid);
+				ngModel.$setValidity('wizValDecimal', valid);
 				return value;
 			}
 		}
@@ -62,7 +62,7 @@ angular.module('wiz.validation.decimal')
 angular.module('wiz.validation.postcode', []);
 angular.module('wiz.validation.postcode')
 
-.directive('wizValidPostcode', function () {
+.directive('wizValPostcode', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -81,7 +81,7 @@ angular.module('wiz.validation.postcode')
 			function validate(value) {
 				// GOV Postcode regex: http://webarchive.nationalarchives.gov.uk/+/http://www.cabinetoffice.gov.uk/media/291370/bs7666-v2-0-xsd-PostCodeType.htm
 				var valid = /^\b(GIR ?0AA|SAN ?TA1|(?:[A-PR-UWYZ](?:\d{0,2}|[A-HK-Y]\d|[A-HK-Y]\d\d|\d[A-HJKSTUW]|[A-HK-Y]\d[ABEHMNPRV-Y])) ?\d[ABD-HJLNP-UW-Z]{2})\b$/i.test(value);
-				ngModel.$setValidity('wizPostcode', valid);
+				ngModel.$setValidity('wizValPostcode', valid);
 				return value;
 			}
 		}
@@ -90,7 +90,7 @@ angular.module('wiz.validation.postcode')
 angular.module('wiz.validation.zipcode', []);
 angular.module('wiz.validation.zipcode')
 
-.directive('wizValidZipcode', function () {
+.directive('wizValZipcode', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -108,7 +108,7 @@ angular.module('wiz.validation.zipcode')
 
 			function validate(value) {
 				var valid = /(^\d{5}-?\d{4}$)|(^\d{5}$)/.test(value);
-				ngModel.$setValidity('wizZipcode', valid);
+				ngModel.$setValidity('wizValZipcode', valid);
 				return value;
 			}
 		}
@@ -117,7 +117,7 @@ angular.module('wiz.validation.zipcode')
 angular.module('wiz.validation.phone', []);
 angular.module('wiz.validation.phone')
 
-.directive('wizValidPhone', function () {
+.directive('wizValPhone', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -135,7 +135,7 @@ angular.module('wiz.validation.phone')
 
 			function validate(value) {
 				var valid = /(^(((\+|00)44)?)([1-9]{1}[0-9]{9})$)|(^[0][0-9]{10}$)/.test(value);
-				ngModel.$setValidity('wizPhone', valid);
+				ngModel.$setValidity('wizValPhone', valid);
 				return value;
 			}
 		}

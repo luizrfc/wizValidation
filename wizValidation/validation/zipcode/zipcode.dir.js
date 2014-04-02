@@ -1,6 +1,6 @@
 ﻿angular.module('wiz.validation.zipcode')
 
-.directive('wizValidZipcode', function () {
+.directive('wizValZipcode', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -18,7 +18,7 @@
 
 			function validate(value) {
 				var valid = /(^\d{5}-?\d{4}$)|(^\d{5}$)/.test(value);
-				ngModel.$setValidity('wizZipcode', valid);
+				ngModel.$setValidity('wizValZipcode', valid);
 				return value;
 			}
 		}

@@ -1,6 +1,6 @@
 ﻿angular.module('wiz.validation.integer')
 
-.directive('wizValidInteger', function () {
+.directive('wizValInteger', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -18,7 +18,7 @@
 
 			function validate(value) {
 				var valid = /^-?[0-9]+$/.test(value);
-				ngModel.$setValidity('wizInteger', valid);
+				ngModel.$setValidity('wizValInteger', valid);
 				return value;
 			}
 		}

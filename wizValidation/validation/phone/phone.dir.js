@@ -1,6 +1,6 @@
 ﻿angular.module('wiz.validation.phone')
 
-.directive('wizValidPhone', function () {
+.directive('wizValPhone', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -18,7 +18,7 @@
 
 			function validate(value) {
 				var valid = /(^(((\+|00)44)?)([1-9]{1}[0-9]{9})$)|(^[0][0-9]{10}$)/.test(value);
-				ngModel.$setValidity('wizPhone', valid);
+				ngModel.$setValidity('wizValPhone', valid);
 				return value;
 			}
 		}

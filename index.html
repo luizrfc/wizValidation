@@ -24,23 +24,23 @@
 	<form name="demoForm">
 		<label>
 			Integer:
-			<input type="number" name="integer" ng-model="demo.integer" wiz-valid-integer ng-class="{invalid: demoForm.integer.$error.wizInteger}" />
+			<input type="number" name="integer" ng-model="demo.integer" wiz-val-integer ng-class="{invalid: demoForm.integer.$error.wizValInteger}" />
 		</label>
 		<label>
 			Decimal:
-			<input type="number" step=".5" name="decimal" ng-model="demo.decimal" wiz-valid-decimal ng-class="{invalid: demoForm.decimal.$error.wizDecimal}" />
+			<input type="number" step=".5" name="decimal" ng-model="demo.decimal" wiz-val-decimal ng-class="{invalid: demoForm.decimal.$error.wizValDecimal}" />
 		</label>
 		<label>
 			Postcode:
-			<input type="text" name="postcode" ng-model="demo.postcode" wiz-valid-postcode ng-class="{invalid: demoForm.postcode.$error.wizPostcode}" />
+			<input type="text" name="postcode" ng-model="demo.postcode" wiz-val-postcode ng-class="{invalid: demoForm.postcode.$error.wizValPostcode}" />
 		</label>
 		<label>
 			Zipcode:
-			<input type="text" name="zipcode" ng-model="demo.zipcode" wiz-valid-zipcode ng-class="{invalid: demoForm.zipcode.$error.wizZipcode}" />
+			<input type="text" name="zipcode" ng-model="demo.zipcode" wiz-val-zipcode ng-class="{invalid: demoForm.zipcode.$error.wizValZipcode}" />
 		</label>
 		<label>
 			Phone:
-			<input type="text" name="phone" ng-model="demo.phone" wiz-valid-phone ng-class="{invalid: demoForm.phone.$error.wizPhone}" />
+			<input type="text" name="phone" ng-model="demo.phone" wiz-val-phone ng-class="{invalid: demoForm.phone.$error.wizValPhone}" />
 		</label>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
