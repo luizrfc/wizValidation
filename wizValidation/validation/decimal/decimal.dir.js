@@ -1,6 +1,6 @@
-﻿angular.module('wiz.validation.integer')
+﻿angular.module('wiz.validation.decimal')
 
-.directive('wizValidInteger', function () {
+.directive('wizValidDecimal', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -17,9 +17,8 @@
 			});
 
 			function validate(value) {
-				// Don't test for required
-				var valid = /^-?[0-9]+$/.test(value);
-				ngModel.$setValidity('wizInteger', valid);
+				var valid = /^-?[0-9]+(\.[0-9]+)$/.test(value);
+				ngModel.$setValidity('wizDecimal', valid);
 				return value;
 			}
 		}

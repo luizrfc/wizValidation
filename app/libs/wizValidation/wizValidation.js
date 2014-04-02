@@ -1,14 +1,15 @@
 ﻿angular.module('wiz.validation', [
-	'wiz.validation.integer'
+	'wiz.validation.integer',
+	'wiz.validation.decimal'
 ]);
 angular.module('wiz.validation.integer', []);
 angular.module('wiz.validation.integer')
 
-.directive('wizValidInteger', ['$http', function ($http) {
+.directive('wizValidInteger', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
-		link: function (scope, elem, attr, ngModel) {			
+		link: function (scope, elem, attr, ngModel) {
 
 			//For DOM -> model validation
 			ngModel.$parsers.unshift(function (value) {
@@ -21,10 +22,36 @@ angular.module('wiz.validation.integer')
 			});
 
 			function validate(value) {
-				console.log(value);
-				// Check if value is whole number: http://stackoverflow.com/questions/3885817/how-to-check-if-a-number-is-float-or-integer
-				var valid = /^\+?(0|[1-9]\d*)$/.test(value);
+				// Don't test for required
+				var valid = /^-?[0-9]+$/.test(value);
 				ngModel.$setValidity('wizInteger', valid);
+				return value;
+			}
+		}
+	};
+});
+angular.module('wiz.validation.decimal', []);
+angular.module('wiz.validation.decimal')
+
+.directive('wizValidDecimal', function () {
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		link: function (scope, elem, attr, ngModel) {
+
+			//For DOM -> model validation
+			ngModel.$parsers.unshift(function (value) {
+				return validate(value);
+			});
+
+			//For model -> DOM validation
+			ngModel.$formatters.unshift(function (value) {
+				return validate(value);
+			});
+
+			function validate(value) {
+				var valid = /^-?[0-9]+(\.[0-9]+)$/.test(value);
+				ngModel.$setValidity('wizDecimal', valid);
 				return value;
 			}
 		}
