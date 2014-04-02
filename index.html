@@ -34,6 +34,10 @@
 			Postcode:
 			<input type="text" name="postcode" ng-model="demo.postcode" wiz-valid-postcode ng-class="{invalid: demoForm.postcode.$error.wizPostcode}" />
 		</label>
+		<label>
+			Zipcode:
+			<input type="text" name="zipcode" ng-model="demo.zipcode" wiz-valid-zipcode ng-class="{invalid: demoForm.zipcode.$error.wizZipcode}" />
+		</label>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
 	<script src="app/libs/wizValidation/wizValidation.js"></script>
