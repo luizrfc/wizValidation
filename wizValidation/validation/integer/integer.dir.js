@@ -17,7 +17,6 @@
 			});
 
 			function validate(value) {
-				// Don't test for required
 				var valid = /^-?[0-9]+$/.test(value);
 				ngModel.$setValidity('wizInteger', valid);
 				return value;
