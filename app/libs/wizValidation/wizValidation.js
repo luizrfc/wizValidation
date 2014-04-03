@@ -186,24 +186,24 @@ angular.module('wiz.validation.atLeastOne')
 
 			//For DOM -> model validation
 			ngModel.$parsers.unshift(function (value) {
-				wizAtLeastOneSvc.addValue({
-					name: elem[0].name,
-					value: value
-				});
+				addValue(value);
 				return value;
 			});
 
 			//For model -> DOM validation
 			ngModel.$formatters.unshift(function (value) {
+				addValue(value);
+				return value;
+			});
+			
+			function addValue(value) {
 				wizAtLeastOneSvc.addValue({
 					name: elem[0].name,
 					value: value
 				});
-				return value;
-			});
-			
+			}
+
 			function validate() {
-				debugger;
 				valid = false;
 				if (!wizAtLeastOneSvc.isEmpty()) valid = true;
 				ngModel.$setValidity('wizValAtLeastOne', valid);
