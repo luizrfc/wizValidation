@@ -42,6 +42,18 @@
 			Phone:
 			<input type="text" name="phone" ng-model="demo.phone" wiz-val-phone ng-class="{invalid: demoForm.phone.$error.wizValPhone}" />
 		</label>
+		<label>
+			At:
+			<input type="text" name="atleastone1" ng-model="demo.atleastone1" wiz-val-at-least-one ng-class="{invalid: demoForm.atleastone1.$error.wizValAtLeastOne}" />
+		</label>
+		<label>
+			Least:
+			<input type="text" name="atleastone2" ng-model="demo.atleastone2" wiz-val-at-least-one ng-class="{invalid: demoForm.atleastone2.$error.wizValAtLeastOne}" />
+		</label>
+		<label>
+		  One:
+			<input type="text" name="atleastone3" ng-model="demo.atleastone3" wiz-val-at-least-one ng-class="{invalid: demoForm.atleastone3.$error.wizValAtLeastOne}" />
+		</label>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
 	<script src="app/libs/wizValidation/wizValidation.js"></script>

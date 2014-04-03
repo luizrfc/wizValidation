@@ -3,5 +3,6 @@
 	'wiz.validation.decimal',
 	'wiz.validation.postcode',
 	'wiz.validation.zipcode',
-	'wiz.validation.phone'
+	'wiz.validation.phone',
+	'wiz.validation.atLeastOne'
 ]);
