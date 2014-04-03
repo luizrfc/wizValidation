@@ -4,7 +4,7 @@
 	return {
 		restrict: 'A',
 		require: 'ngModel',
-		link: function (scope, elem, attr, ngModel) {
+		link: function (scope, elem, attrs, ngModel) {
 
 			//For DOM -> model validation
 			ngModel.$parsers.unshift(function (value) {
@@ -20,14 +20,15 @@
 			
 			function addValue(value) {
 				wizAtLeastOneSvc.addValue({
-					name: elem[0].name,
+					name: attrs.ngModel,
+					group: attrs.wizValAtLeastOne,
 					value: value
 				});
 			}
 
 			function validate() {
 				valid = false;
-				if (!wizAtLeastOneSvc.isEmpty()) valid = true;
+				if (!wizAtLeastOneSvc.isEmpty(attrs.wizValAtLeastOne)) valid = true;
 				ngModel.$setValidity('wizValAtLeastOne', valid);
 			}
 

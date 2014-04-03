@@ -19,10 +19,12 @@
 		if (!existingValue) this.values.push(value);
 	};
 
-	this.isEmpty = function () {
+	this.isEmpty = function (group) {
 		var isEmpty = true;
 		for (var i = 0; i < this.values.length; i++) {
-			if (this.values[i].value && this.values[i].value.length > 0) {
+			if (this.values[i].value &&
+			    this.values[i].group === group &&
+			    this.values[i].value.length > 0) {
 				isEmpty = false;
 				break;
 			}

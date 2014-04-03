@@ -165,10 +165,12 @@ angular.module('wiz.validation.atLeastOne')
 		if (!existingValue) this.values.push(value);
 	};
 
-	this.isEmpty = function () {
+	this.isEmpty = function (group) {
 		var isEmpty = true;
 		for (var i = 0; i < this.values.length; i++) {
-			if (this.values[i].value && this.values[i].value.length > 0) {
+			if (this.values[i].value &&
+			    this.values[i].group === group &&
+			    this.values[i].value.length > 0) {
 				isEmpty = false;
 				break;
 			}
@@ -182,7 +184,7 @@ angular.module('wiz.validation.atLeastOne')
 	return {
 		restrict: 'A',
 		require: 'ngModel',
-		link: function (scope, elem, attr, ngModel) {
+		link: function (scope, elem, attrs, ngModel) {
 
 			//For DOM -> model validation
 			ngModel.$parsers.unshift(function (value) {
@@ -198,14 +200,15 @@ angular.module('wiz.validation.atLeastOne')
 			
 			function addValue(value) {
 				wizAtLeastOneSvc.addValue({
-					name: elem[0].name,
+					name: attrs.ngModel,
+					group: attrs.wizValAtLeastOne,
 					value: value
 				});
 			}
 
 			function validate() {
 				valid = false;
-				if (!wizAtLeastOneSvc.isEmpty()) valid = true;
+				if (!wizAtLeastOneSvc.isEmpty(attrs.wizValAtLeastOne)) valid = true;
 				ngModel.$setValidity('wizValAtLeastOne', valid);
 			}
 
