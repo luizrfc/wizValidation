@@ -72,6 +72,26 @@
 		<label>
 			<input type="text" name="atleastoneC" ng-model="demo.atleastoneC" wiz-val-at-least-one="group2" ng-class="{invalid: demoForm.atleastoneC.$error.wizValAtLeastOne}" />
 		</label>
+		<label>
+			Must equal group 1
+			<input type="text" name="equalTo1" ng-model="demo.equalTo1" wiz-val-equal-to ng-class="{invalid: demoForm.equalTo1.$error.wizValEqualTo}" />
+		</label>
+		<label>
+			<input type="text" name="equalTo2" ng-model="demo.equalTo2" wiz-val-equal-to ng-class="{invalid: demoForm.equalTo2.$error.wizValEqualTo}" />
+		</label>
+		<label>
+			<input type="text" name="equalTo3" ng-model="demo.equalTo3" wiz-val-equal-to ng-class="{invalid: demoForm.equalTo3.$error.wizValEqualTo}" />
+		</label>
+		<label>
+			Must equal group 2
+			<input type="text" name="equalToA" ng-model="demo.equalToA" wiz-val-equal-to="group2" ng-class="{invalid: demoForm.equalToA.$error.wizValEqualTo}" />
+		</label>
+		<label>
+			<input type="text" name="equalToB" ng-model="demo.equalToB" wiz-val-equal-to="group2" ng-class="{invalid: demoForm.equalToB.$error.wizValEqualTo}" />
+		</label>
+		<label>
+			<input type="text" name="equalToC" ng-model="demo.equalToC" wiz-val-equal-to="group2" ng-class="{invalid: demoForm.equalToC.$error.wizValEqualTo}" />
+		</label>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
 	<script src="app/libs/wizValidation/wizValidation.js"></script>

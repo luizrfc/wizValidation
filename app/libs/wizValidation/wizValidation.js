@@ -4,7 +4,8 @@
 	'wiz.validation.postcode',
 	'wiz.validation.zipcode',
 	'wiz.validation.phone',
-	'wiz.validation.atLeastOne'
+	'wiz.validation.atLeastOne',
+	'wiz.validation.equalTo'
 ]);
 angular.module('wiz.validation.integer', []);
 angular.module('wiz.validation.integer')
@@ -218,6 +219,85 @@ angular.module('wiz.validation.atLeastOne')
 
 			scope.$on('$destroy', function () {
 				wizAtLeastOneSvc.cleanup();
+			});
+		}
+	};
+}]);
+angular.module('wiz.validation.equalTo', []);
+angular.module('wiz.validation.equalTo')
+
+.service('wizEqualToSvc', ['$filter', function ($filter) {
+	this.values = [];
+
+	this.cleanup = function () {
+		this.values = [];
+	};
+
+	this.addValue = function (value) {
+		var existingValue = false;
+		for (var i = 0; i < this.values.length; i++) {
+			if (this.values[i].name === value.name) {
+				this.values[i] = value;
+				existingValue = true;
+				break;
+			}
+		}
+		if (!existingValue) this.values.push(value);
+	};
+
+	this.isEqual = function (group) {
+		debugger;
+		var isEqual = true;
+		var groupValues = $filter('filter')(this.values, { group: group }, true);
+		for (var i = 0; i < groupValues.length; i++) {
+			if (groupValues[i].value !== groupValues[0].value) {
+				isEqual = false;
+				break;
+			}
+		}
+		return isEqual;
+	};
+}]);
+angular.module('wiz.validation.equalTo')
+
+.directive('wizValEqualTo', ['wizEqualToSvc', function (wizEqualToSvc) {
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		link: function (scope, elem, attrs, ngModel) {
+
+			//For DOM -> model validation
+			ngModel.$parsers.unshift(function (value) {
+				addValue(value);
+				return value;
+			});
+
+			//For model -> DOM validation
+			ngModel.$formatters.unshift(function (value) {
+				addValue(value);
+				return value;
+			});
+			
+			function addValue(value) {
+				wizEqualToSvc.addValue({
+					name: attrs.ngModel,
+					group: attrs.wizValEqualTo,
+					value: value
+				});
+			}
+
+			function validate() {
+				valid = false;
+				if (wizEqualToSvc.isEqual(attrs.wizValEqualTo)) valid = true;
+				ngModel.$setValidity('wizValEqualTo', valid);
+			}
+
+			scope.$watch(function () { return wizEqualToSvc.values; }, function () {
+				validate();
+			}, true);
+
+			scope.$on('$destroy', function () {
+				wizEqualToSvc.cleanup();
 			});
 		}
 	};

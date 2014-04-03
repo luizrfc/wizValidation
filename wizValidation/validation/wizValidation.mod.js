@@ -4,5 +4,6 @@
 	'wiz.validation.postcode',
 	'wiz.validation.zipcode',
 	'wiz.validation.phone',
-	'wiz.validation.atLeastOne'
+	'wiz.validation.atLeastOne',
+	'wiz.validation.equalTo'
 ]);
