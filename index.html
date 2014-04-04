@@ -92,6 +92,10 @@
 		<label>
 			<input type="text" name="equalToC" ng-model="demo.equalToC" wiz-val-equal-to="group2" ng-class="{invalid: demoForm.equalToC.$error.wizValEqualTo}" />
 		</label>
+		<label>
+			Starts with "begin":
+			<input type="text" name="startsWith" ng-model="demo.startsWith" wiz-val-starts-with="begin" ng-class="{invalid: demoForm.startsWith.$error.wizValStartsWith}" />
+		</label>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
 	<script src="app/libs/wizValidation/wizValidation.js"></script>

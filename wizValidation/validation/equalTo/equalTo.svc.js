@@ -20,7 +20,6 @@
 	};
 
 	this.isEqual = function (group) {
-		debugger;
 		var isEqual = true;
 		var groupValues = $filter('filter')(this.values, { group: group }, true);
 		for (var i = 0; i < groupValues.length; i++) {
