@@ -13,13 +13,15 @@ Example:
 
 
 ##Validators
-There are currently 7 validators available with more in the works:
+There are currently 9 validators available with more in the works:
 
 - integer
 - decimal
 - phone (currently UK only)
 - postcode
 - zipcode
+- starts with
+- ends with
 - at least one
 - equal to
 
