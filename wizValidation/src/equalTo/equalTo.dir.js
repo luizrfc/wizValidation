@@ -4,7 +4,7 @@
 	return {
 		restrict: 'A',
 		require: 'ngModel',
-		link: function (scope, elem, attrs, ngModel) {
+		link: function (scope, elem, attr, ngModel) {
 
 			//For DOM -> model validation
 			ngModel.$parsers.unshift(function (value) {
@@ -20,15 +20,14 @@
 			
 			function addValue(value) {
 				wizEqualToSvc.addValue({
-					name: attrs.ngModel,
-					group: attrs.wizValEqualTo,
+					name: attr.ngModel,
+					group: attr.wizValEqualTo,
 					value: value
 				});
 			}
 
 			function validate() {
-				valid = false;
-				if (wizEqualToSvc.isEqual(attrs.wizValEqualTo)) valid = true;
+                var valid = wizEqualToSvc.isEqual(attr.wizValEqualTo);
 				ngModel.$setValidity('wizValEqualTo', valid);
 			}
 
