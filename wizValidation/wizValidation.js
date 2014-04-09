@@ -161,6 +161,9 @@ angular.module('wiz.validation.endsWith')
 	return {
 		restrict: 'A',
 		require: 'ngModel',
+        scope: {
+          endsWith: '=wizValEndsWith'
+        },
 		link: function (scope, elem, attrs, ngModel) {
 
 			//For DOM -> model validation
@@ -174,8 +177,11 @@ angular.module('wiz.validation.endsWith')
 			});
 
 			function validate(value) {
+                var valid = false;
 				if (typeof value === "undefined") value = "";
-				var valid = value.indexOf(attrs.wizValEndsWith, value.length - attrs.wizValEndsWith.length) !== -1;
+                if (typeof scope.endsWith !== "undefined") {
+                    valid = value.indexOf(scope.endsWith, value.length - scope.endsWith.length) !== -1;
+                }
 				ngModel.$setValidity('wizValEndsWith', valid);
 				return value;
 			}
@@ -311,6 +317,9 @@ angular.module('wiz.validation.startsWith')
 	return {
 		restrict: 'A',
 		require: 'ngModel',
+        scope: {
+          startsWith: '=wizValStartsWith'
+        },
 		link: function (scope, elem, attrs, ngModel) {
 
 			//For DOM -> model validation
@@ -325,7 +334,7 @@ angular.module('wiz.validation.startsWith')
 
 			function validate(value) {
 				if (typeof value === "undefined") value = "";
-				var valid = value.lastIndexOf(attrs.wizValStartsWith, 0) === 0;
+				var valid = value.lastIndexOf(scope.startsWith, 0) === 0;
 				ngModel.$setValidity('wizValStartsWith', valid);
 				return value;
 			}

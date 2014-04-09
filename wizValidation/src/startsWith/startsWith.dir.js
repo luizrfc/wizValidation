@@ -4,6 +4,9 @@
 	return {
 		restrict: 'A',
 		require: 'ngModel',
+        scope: {
+          startsWith: '=wizValStartsWith'
+        },
 		link: function (scope, elem, attrs, ngModel) {
 
 			//For DOM -> model validation
@@ -18,7 +21,7 @@
 
 			function validate(value) {
 				if (typeof value === "undefined") value = "";
-				var valid = value.lastIndexOf(attrs.wizValStartsWith, 0) === 0;
+				var valid = value.lastIndexOf(scope.startsWith, 0) === 0;
 				ngModel.$setValidity('wizValStartsWith', valid);
 				return value;
 			}

@@ -94,11 +94,11 @@
 		</label>
 		<label>
 			Starts with "begin":
-			<input type="text" name="startsWith" ng-model="demo.startsWith" wiz-val-starts-with="begin" ng-class="{invalid: demoForm.startsWith.$error.wizValStartsWith}" />
+			<input type="text" name="startsWith" ng-model="demo.startsWith" wiz-val-starts-with="'begin'" ng-class="{invalid: demoForm.startsWith.$error.wizValStartsWith}" />
 		</label>
 		<label>
-			Ends with "finsh":
-			<input type="text" name="endsWith" ng-model="demo.endsWith" wiz-val-ends-with="finish" ng-class="{invalid: demoForm.endsWith.$error.wizValEndsWith}" />
+			Ends with "finish":
+			<input type="text" name="endsWith" ng-model="demo.endsWith" wiz-val-ends-with="'finish'" ng-class="{invalid: demoForm.endsWith.$error.wizValEndsWith}" />
 		</label>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
