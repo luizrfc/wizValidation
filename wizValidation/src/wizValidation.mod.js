@@ -6,6 +6,7 @@
 	'wiz.validation.phone',
 	'wiz.validation.atLeastOne',
 	'wiz.validation.equalTo',
+	'wiz.validation.notEqualTo',
 	'wiz.validation.startsWith',
 	'wiz.validation.endsWith'
 ]);
