@@ -5,26 +5,32 @@ describe('Postcode validation', function () {
 		var elem = element(by.model('demo.postcode'));
 
 		elem.sendKeys('AA9A 9AA');
+
 		expect(elem.getAttribute('class')).not.toMatch('invalid');
 		elem.clear();
 
 		elem.sendKeys('A9A 9AA');
+
 		expect(elem.getAttribute('class')).not.toMatch('invalid');
 		elem.clear();
 
 		elem.sendKeys('A9 9AA');
+
 		expect(elem.getAttribute('class')).not.toMatch('invalid');
 		elem.clear();
 
 		elem.sendKeys('A99 9AA');
+
 		expect(elem.getAttribute('class')).not.toMatch('invalid');
 		elem.clear();
 
 		elem.sendKeys('AA9 9AA');
+
 		expect(elem.getAttribute('class')).not.toMatch('invalid');
 		elem.clear();
 
 		elem.sendKeys('AA99 9AA');
+
 		expect(elem.getAttribute('class')).not.toMatch('invalid');
 		elem.clear();
 	});
