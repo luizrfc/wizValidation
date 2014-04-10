@@ -7,6 +7,7 @@
 	'wiz.validation.atLeastOne',
 	'wiz.validation.equalTo',
 	'wiz.validation.notEqualTo',
+	'wiz.validation.unique',
 	'wiz.validation.startsWith',
 	'wiz.validation.endsWith'
 ]);

@@ -113,6 +113,16 @@
 			<input type="text" name="notEqualToC" ng-model="demo.notEqualToC" wiz-val-not-equal-to="group2" ng-class="{invalid: demoForm.notEqualToC.$error.wizValNotEqualTo}" />
 		</label>
 		<label>
+			Unique group 1
+			<input type="text" name="unique1" ng-model="demo.unique1" wiz-val-unique ng-class="{invalid: demoForm.unique1.$error.wizValUnique}" />
+		</label>
+		<label>
+			<input type="text" name="unique2" ng-model="demo.unique2" wiz-val-unique ng-class="{invalid: demoForm.unique2.$error.wizValUnique}" />
+		</label>
+		<label>
+			<input type="text" name="unique3" ng-model="demo.unique3" wiz-val-unique ng-class="{invalid: demoForm.unique3.$error.wizValUnique}" />
+		</label>
+		<label>
 			Starts with "begin":
 			<input type="text" name="startsWith" ng-model="demo.startsWith" wiz-val-starts-with="'begin'" ng-class="{invalid: demoForm.startsWith.$error.wizValStartsWith}" />
 		</label>
@@ -122,7 +132,7 @@
 		</label>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
-	<script src="app/libs/wizValidation/wizValidation.js"></script>
+	<script src="app/libs/wizValidation/wizValidation.min.js"></script>
 	<script src="app/features/home/home.mod.js"></script>
 	<script src="app/features/home/home.ctrl.js"></script>
 	<script src="app/app.js"></script>

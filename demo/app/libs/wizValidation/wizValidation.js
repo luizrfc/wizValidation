@@ -7,6 +7,7 @@ angular.module('wiz.validation', [
 	'wiz.validation.atLeastOne',
 	'wiz.validation.equalTo',
 	'wiz.validation.notEqualTo',
+	'wiz.validation.unique',
 	'wiz.validation.startsWith',
 	'wiz.validation.endsWith'
 ]);
@@ -19,6 +20,7 @@ angular.module('wiz.validation.notEqualTo', []);
 angular.module('wiz.validation.phone', []);
 angular.module('wiz.validation.postcode', []);
 angular.module('wiz.validation.startsWith', []);
+angular.module('wiz.validation.unique', []);
 angular.module('wiz.validation.zipcode', []);
 angular.module('wiz.validation.atLeastOne')
 
@@ -118,6 +120,43 @@ angular.module('wiz.validation.notEqualTo')
 			}
 		}
 		return isEqual;
+	};
+}]);
+angular.module('wiz.validation.unique')
+
+.service('wizUniqueSvc', ['$filter', function ($filter) {
+	this.values = [];
+
+	this.cleanup = function () {
+		this.values = [];
+	};
+
+	this.addValue = function (value) {
+		var existingValue = false;
+		for (var i = 0; i < this.values.length; i++) {
+			if (this.values[i].name === value.name) {
+				this.values[i] = value;
+				existingValue = true;
+				break;
+			}
+		}
+		if (!existingValue) this.values.push(value);
+	};
+
+	this.isUnique = function (group) {
+		var isUnique = true;
+		var groupValues = $filter('filter')(this.values, { group: group }, true);
+		for (var i = 0; i < groupValues.length; i++) {
+			if (!isUnique) break;
+			for (var j = 0; j < groupValues.length; j++) {
+				if (i === j) continue;
+				if (groupValues[i].value === groupValues[j].value) {
+					isUnique = false;
+					break;
+				}
+			}
+		}
+		return isUnique;
 	};
 }]);
 angular.module('wiz.validation.atLeastOne')
@@ -419,6 +458,49 @@ angular.module('wiz.validation.startsWith')
 		}
 	};
 });
+angular.module('wiz.validation.unique')
+
+.directive('wizValUnique', ['wizUniqueSvc', function (wizUniqueSvc) {
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		link: function (scope, elem, attr, ngModel) {
+
+			//For DOM -> model validation
+			ngModel.$parsers.unshift(function (value) {
+				addValue(value);
+				return value;
+			});
+
+			//For model -> DOM validation
+			ngModel.$formatters.unshift(function (value) {
+				addValue(value);
+				return value;
+			});
+
+			function addValue(value) {
+				wizUniqueSvc.addValue({
+					name: attr.ngModel,
+					group: attr.wizValUnique,
+					value: value
+				});
+			}
+
+			function validate() {
+				var valid = wizUniqueSvc.isUnique(attr.wizValUnique);
+				ngModel.$setValidity('wizValUnique', valid);
+			}
+
+			scope.$watch(function () { return wizUniqueSvc.values; }, function () {
+				validate();
+			}, true);
+
+			scope.$on('$destroy', function () {
+				wizUniqueSvc.cleanup();
+			});
+		}
+	};
+}]);
 angular.module('wiz.validation.zipcode')
 
 .directive('wizValZipcode', function () {

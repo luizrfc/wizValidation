@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 		uglify: {
 			js: {
 				files: {
-					'wizValidation/wizValidation.min.js': ['<%= concat.js.dest %>']
+					'wizValidation/wizValidation.min.js': ['<%= concat.js.src %>']
 				}
 			}
 		},
