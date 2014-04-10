@@ -66,6 +66,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-protractor-webdriver');
 	grunt.loadNpmTasks('grunt-protractor-runner');
+
 	grunt.registerTask('test', ['protractor_webdriver:start', 'protractor']);
 	grunt.registerTask('default', ['concat', 'uglify']);
 };
