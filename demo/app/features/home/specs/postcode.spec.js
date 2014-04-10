@@ -1,5 +1,5 @@
 describe('Postcode validation', function () {
-	it('should allow standard UK postocde formats', function () {
+	it('should allow standard UK postcode formats', function () {
 		browser.get('/ngValidation/demo/index.html');
 
 		var elem = element(by.model('demo.postcode'));
