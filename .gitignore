@@ -1,2 +1,3 @@
 *.bundle
-grunt/node_modules
+node_modules
+.idea

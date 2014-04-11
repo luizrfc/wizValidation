@@ -4,6 +4,9 @@
 	return {
 		restrict: 'A',
 		require: 'ngModel',
+        scope: {
+          endsWith: '=wizValEndsWith'
+        },
 		link: function (scope, elem, attrs, ngModel) {
 
 			//For DOM -> model validation
@@ -17,8 +20,11 @@
 			});
 
 			function validate(value) {
+                var valid = false;
 				if (typeof value === "undefined") value = "";
-				var valid = value.indexOf(attrs.wizValEndsWith, value.length - attrs.wizValEndsWith.length) !== -1;
+                if (typeof scope.endsWith !== "undefined") {
+                    valid = value.indexOf(scope.endsWith, value.length - scope.endsWith.length) !== -1;
+                }
 				ngModel.$setValidity('wizValEndsWith', valid);
 				return value;
 			}

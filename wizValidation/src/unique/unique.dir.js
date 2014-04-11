@@ -1,6 +1,6 @@
-﻿angular.module('wiz.validation.equalTo')
+﻿angular.module('wiz.validation.unique')
 
-.directive('wizValEqualTo', ['wizEqualToSvc', function (wizEqualToSvc) {
+.directive('wizValUnique', ['wizUniqueSvc', function (wizUniqueSvc) {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -17,26 +17,26 @@
 				addValue(value);
 				return value;
 			});
-			
+
 			function addValue(value) {
-				wizEqualToSvc.addValue({
+				wizUniqueSvc.addValue({
 					name: attr.ngModel,
-					group: attr.wizValEqualTo,
+					group: attr.wizValUnique,
 					value: value
 				});
 			}
 
 			function validate() {
-                var valid = wizEqualToSvc.isEqual(attr.wizValEqualTo);
-				ngModel.$setValidity('wizValEqualTo', valid);
+				var valid = wizUniqueSvc.isUnique(attr.wizValUnique);
+				ngModel.$setValidity('wizValUnique', valid);
 			}
 
-			scope.$watch(function () { return wizEqualToSvc.values; }, function () {
+			scope.$watch(function () { return wizUniqueSvc.values; }, function () {
 				validate();
 			}, true);
 
 			scope.$on('$destroy', function () {
-				wizEqualToSvc.cleanup();
+				wizUniqueSvc.cleanup();
 			});
 		}
 	};

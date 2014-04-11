@@ -27,7 +27,7 @@
 			}
 
 			function validate() {
-				valid = false;
+                var valid = false;
 				if (!wizAtLeastOneSvc.isEmpty(attrs.wizValAtLeastOne)) valid = true;
 				ngModel.$setValidity('wizValAtLeastOne', valid);
 			}

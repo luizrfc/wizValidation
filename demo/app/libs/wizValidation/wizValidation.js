@@ -6,18 +6,21 @@ angular.module('wiz.validation', [
 	'wiz.validation.phone',
 	'wiz.validation.atLeastOne',
 	'wiz.validation.equalTo',
+	'wiz.validation.notEqualTo',
+	'wiz.validation.unique',
 	'wiz.validation.startsWith',
 	'wiz.validation.endsWith'
 ]);
-
 angular.module('wiz.validation.atLeastOne', []);
 angular.module('wiz.validation.decimal', []);
 angular.module('wiz.validation.endsWith', []);
 angular.module('wiz.validation.equalTo', []);
 angular.module('wiz.validation.integer', []);
+angular.module('wiz.validation.notEqualTo', []);
 angular.module('wiz.validation.phone', []);
 angular.module('wiz.validation.postcode', []);
 angular.module('wiz.validation.startsWith', []);
+angular.module('wiz.validation.unique', []);
 angular.module('wiz.validation.zipcode', []);
 angular.module('wiz.validation.atLeastOne')
 
@@ -86,6 +89,76 @@ angular.module('wiz.validation.equalTo')
 		return isEqual;
 	};
 }]);
+angular.module('wiz.validation.notEqualTo')
+
+.service('wizNotEqualToSvc', ['$filter', function ($filter) {
+	this.values = [];
+
+	this.cleanup = function () {
+		this.values = [];
+	};
+
+	this.addValue = function (value) {
+		var existingValue = false;
+		for (var i = 0; i < this.values.length; i++) {
+			if (this.values[i].name === value.name) {
+				this.values[i] = value;
+				existingValue = true;
+				break;
+			}
+		}
+		if (!existingValue) this.values.push(value);
+	};
+
+	this.isEqual = function (group) {
+		var isEqual = true;
+		var groupValues = $filter('filter')(this.values, { group: group }, true);
+		for (var i = 0; i < groupValues.length; i++) {
+			if (groupValues[i].value !== groupValues[0].value) {
+				isEqual = false;
+				break;
+			}
+		}
+		return isEqual;
+	};
+}]);
+angular.module('wiz.validation.unique')
+
+.service('wizUniqueSvc', ['$filter', function ($filter) {
+	this.values = [];
+
+	this.cleanup = function () {
+		this.values = [];
+	};
+
+	this.addValue = function (value) {
+		var existingValue = false;
+		for (var i = 0; i < this.values.length; i++) {
+			if (this.values[i].name === value.name) {
+				this.values[i] = value;
+				existingValue = true;
+				break;
+			}
+		}
+		if (!existingValue) this.values.push(value);
+	};
+
+	this.isUnique = function (group) {
+		var isUnique = true;
+		var groupValues = $filter('filter')(this.values, { group: group }, true);
+		for (var i = 0; i < groupValues.length; i++) {
+			if (!isUnique) break;
+			for (var j = 0; j < groupValues.length; j++) {
+				if (i === j) continue;
+				if (groupValues[i].value === groupValues[j].value) {
+					isUnique = false;
+					break;
+				}
+			}
+		}
+		return isUnique;
+	};
+}]);
 angular.module('wiz.validation.atLeastOne')
 
 .directive('wizValAtLeastOne', ['wizAtLeastOneSvc', function (wizAtLeastOneSvc) {
@@ -115,7 +188,7 @@ angular.module('wiz.validation.atLeastOne')
 			}
 
 			function validate() {
-				valid = false;
+                var valid = false;
 				if (!wizAtLeastOneSvc.isEmpty(attrs.wizValAtLeastOne)) valid = true;
 				ngModel.$setValidity('wizValAtLeastOne', valid);
 			}
@@ -162,6 +235,9 @@ angular.module('wiz.validation.endsWith')
 	return {
 		restrict: 'A',
 		require: 'ngModel',
+        scope: {
+          endsWith: '=wizValEndsWith'
+        },
 		link: function (scope, elem, attrs, ngModel) {
 
 			//For DOM -> model validation
@@ -175,8 +251,11 @@ angular.module('wiz.validation.endsWith')
 			});
 
 			function validate(value) {
+                var valid = false;
 				if (typeof value === "undefined") value = "";
-				var valid = value.indexOf(attrs.wizValEndsWith, value.length - attrs.wizValEndsWith.length) !== -1;
+                if (typeof scope.endsWith !== "undefined") {
+                    valid = value.indexOf(scope.endsWith, value.length - scope.endsWith.length) !== -1;
+                }
 				ngModel.$setValidity('wizValEndsWith', valid);
 				return value;
 			}
@@ -189,7 +268,7 @@ angular.module('wiz.validation.equalTo')
 	return {
 		restrict: 'A',
 		require: 'ngModel',
-		link: function (scope, elem, attrs, ngModel) {
+		link: function (scope, elem, attr, ngModel) {
 
 			//For DOM -> model validation
 			ngModel.$parsers.unshift(function (value) {
@@ -205,15 +284,14 @@ angular.module('wiz.validation.equalTo')
 			
 			function addValue(value) {
 				wizEqualToSvc.addValue({
-					name: attrs.ngModel,
-					group: attrs.wizValEqualTo,
+					name: attr.ngModel,
+					group: attr.wizValEqualTo,
 					value: value
 				});
 			}
 
 			function validate() {
-				valid = false;
-				if (wizEqualToSvc.isEqual(attrs.wizValEqualTo)) valid = true;
+                var valid = wizEqualToSvc.isEqual(attr.wizValEqualTo);
 				ngModel.$setValidity('wizValEqualTo', valid);
 			}
 
@@ -253,6 +331,49 @@ angular.module('wiz.validation.integer')
 		}
 	};
 });
+angular.module('wiz.validation.notEqualTo')
+
+.directive('wizValNotEqualTo', ['wizNotEqualToSvc', function (wizNotEqualToSvc) {
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		link: function (scope, elem, attr, ngModel) {
+
+			//For DOM -> model validation
+			ngModel.$parsers.unshift(function (value) {
+				addValue(value);
+				return value;
+			});
+
+			//For model -> DOM validation
+			ngModel.$formatters.unshift(function (value) {
+				addValue(value);
+				return value;
+			});
+
+			function addValue(value) {
+				wizNotEqualToSvc.addValue({
+					name: attr.ngModel,
+					group: attr.wizValNotEqualTo,
+					value: value
+				});
+			}
+
+			function validate() {
+				var valid = !wizNotEqualToSvc.isEqual(attr.wizValNotEqualTo);
+				ngModel.$setValidity('wizValNotEqualTo', valid);
+			}
+
+			scope.$watch(function () { return wizNotEqualToSvc.values; }, function () {
+				validate();
+			}, true);
+
+			scope.$on('$destroy', function () {
+				wizNotEqualToSvc.cleanup();
+			});
+		}
+	};
+}]);
 angular.module('wiz.validation.phone')
 
 .directive('wizValPhone', function () {
@@ -313,6 +434,9 @@ angular.module('wiz.validation.startsWith')
 	return {
 		restrict: 'A',
 		require: 'ngModel',
+        scope: {
+          startsWith: '=wizValStartsWith'
+        },
 		link: function (scope, elem, attrs, ngModel) {
 
 			//For DOM -> model validation
@@ -327,13 +451,56 @@ angular.module('wiz.validation.startsWith')
 
 			function validate(value) {
 				if (typeof value === "undefined") value = "";
-				var valid = value.lastIndexOf(attrs.wizValStartsWith, 0) === 0;
+				var valid = value.lastIndexOf(scope.startsWith, 0) === 0;
 				ngModel.$setValidity('wizValStartsWith', valid);
 				return value;
 			}
 		}
 	};
 });
+angular.module('wiz.validation.unique')
+
+.directive('wizValUnique', ['wizUniqueSvc', function (wizUniqueSvc) {
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		link: function (scope, elem, attr, ngModel) {
+
+			//For DOM -> model validation
+			ngModel.$parsers.unshift(function (value) {
+				addValue(value);
+				return value;
+			});
+
+			//For model -> DOM validation
+			ngModel.$formatters.unshift(function (value) {
+				addValue(value);
+				return value;
+			});
+
+			function addValue(value) {
+				wizUniqueSvc.addValue({
+					name: attr.ngModel,
+					group: attr.wizValUnique,
+					value: value
+				});
+			}
+
+			function validate() {
+				var valid = wizUniqueSvc.isUnique(attr.wizValUnique);
+				ngModel.$setValidity('wizValUnique', valid);
+			}
+
+			scope.$watch(function () { return wizUniqueSvc.values; }, function () {
+				validate();
+			}, true);
+
+			scope.$on('$destroy', function () {
+				wizUniqueSvc.cleanup();
+			});
+		}
+	};
+}]);
 angular.module('wiz.validation.zipcode')
 
 .directive('wizValZipcode', function () {
