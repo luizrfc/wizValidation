@@ -17,7 +17,7 @@
 				addValue(value);
 				return value;
 			});
-			
+
 			function addValue(value) {
 				wizEqualToSvc.addValue({
 					name: attr.ngModel,
@@ -27,11 +27,13 @@
 			}
 
 			function validate() {
-                var valid = wizEqualToSvc.isEqual(attr.wizValEqualTo);
+        var valid = wizEqualToSvc.isEqual(attr.wizValEqualTo);
 				ngModel.$setValidity('wizValEqualTo', valid);
 			}
 
-			scope.$watch(function () { return wizEqualToSvc.values; }, function () {
+			scope.$watch(function () {
+        return wizEqualToSvc.values;
+      }, function () {
 				validate();
 			}, true);
 

@@ -31,7 +31,9 @@
 				ngModel.$setValidity('wizValUnique', valid);
 			}
 
-			scope.$watch(function () { return wizUniqueSvc.values; }, function () {
+			scope.$watch(function () {
+        return wizUniqueSvc.values;
+      }, function () {
 				validate();
 			}, true);
 

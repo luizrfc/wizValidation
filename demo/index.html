@@ -3,31 +3,31 @@
 <head>
 	<title>Validation example</title>
 	<style>
-		body {
-			font-size: 1em;
-			font-family: sans-serif;
-		}
+	body {
+		font-size: 1em;
+		font-family: sans-serif;
+	}
 
-		label {
-			display: block;
-			padding: 10px;
-		}
+	label {
+		display: block;
+		padding: 10px;
+	}
 
-			label input {
-				display: block;
-				border: 1px solid grey;
-				padding: 5px;
-				-moz-box-sizing: border-box;
-				-webkit-box-sizing: border-box;
-				box-sizing: border-box;
-				border-radius: 6px;
-				outline: none;
-			}
+	label input {
+		display: block;
+		border: 1px solid grey;
+		padding: 5px;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		border-radius: 6px;
+		outline: none;
+	}
 
-		.invalid {
-			color: red;
-			border: 1px red solid;
-		}
+	.invalid {
+		color: red;
+		border: 1px red solid;
+	}
 	</style>
 </head>
 <body ng-controller="HomeCtrl">
@@ -51,6 +51,10 @@
 		<label>
 			Phone:
 			<input type="text" name="phone" ng-model="demo.phone" wiz-val-phone ng-class="{invalid: demoForm.phone.$error.wizValPhone}" />
+		</label>
+		<label>
+			Date of birth (18 and over):
+			<input type="date" name="dateOfBirth" ng-model="demo.dateOfBirth" wiz-val-date-of-birth="18" ng-class="{invalid: demoForm.dateOfBirth.$error.wizValDateOfBirth}" />
 		</label>
 		<label>
 			At least one in group 1

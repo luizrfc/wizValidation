@@ -31,7 +31,9 @@
 				ngModel.$setValidity('wizValNotEqualTo', valid);
 			}
 
-			scope.$watch(function () { return wizNotEqualToSvc.values; }, function () {
+			scope.$watch(function () {
+        return wizNotEqualToSvc.values;
+      }, function () {
 				validate();
 			}, true);
 

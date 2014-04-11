@@ -4,13 +4,13 @@
 	return {
 		restrict: 'A',
 		require: 'ngModel',
-        scope: {
-          endsWith: '=wizValEndsWith'
-        },
+    scope: {
+      endsWith: '=wizValEndsWith'
+    },
 		link: function (scope, elem, attrs, ngModel) {
 
 			//For DOM -> model validation
-			ngModel.$parsers.unshift(function (value) {
+      ngModel.$parsers.unshift(function (value) {
 				return validate(value);
 			});
 
@@ -20,13 +20,13 @@
 			});
 
 			function validate(value) {
-                var valid = false;
+        var valid = false;
 				if (typeof value === "undefined") value = "";
-                if (typeof scope.endsWith !== "undefined") {
-                    valid = value.indexOf(scope.endsWith, value.length - scope.endsWith.length) !== -1;
-                }
+        if (typeof scope.endsWith !== "undefined") {
+          valid = value.indexOf(scope.endsWith, value.length - scope.endsWith.length) !== -1;
+        }
 				ngModel.$setValidity('wizValEndsWith', valid);
-				return value;
+        return value;
 			}
 		}
 	};
