@@ -9,7 +9,8 @@ angular.module('wiz.validation', [
 	'wiz.validation.notEqualTo',
 	'wiz.validation.unique',
 	'wiz.validation.startsWith',
-	'wiz.validation.endsWith'
+	'wiz.validation.endsWith',
+    'wiz.validation.file'
 ]);
 angular.module('wiz.validation.atLeastOne', []);
 angular.module('wiz.validation.decimal', []);
