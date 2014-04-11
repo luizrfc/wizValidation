@@ -13,19 +13,15 @@ Example:
 
 
 ##Validators
-There are currently 11 validators available with more in the works:
+There are currently 7 validators available with more in the works:
 
 - integer
 - decimal
-- starts with
-- ends with
 - phone (currently UK only)
 - postcode
 - zipcode
 - at least one
 - equal to
-- not equal to
-- unique
 
 All the validators follow the same pattern of prefixing, as an example for **Zipcode**:
 

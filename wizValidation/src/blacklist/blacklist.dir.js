@@ -1,9 +1,10 @@
-﻿angular.module('wiz.validation.endsWith')
+﻿angular.module('wiz.validation.blacklist')
 
-.directive('wizValEndsWith', function () {
+.directive('wizValBlacklist', function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
+		scope: { blacklist: '=wizValBlacklist' },
 		link: function (scope, elem, attrs, ngModel) {
 
 			//For DOM -> model validation
@@ -18,8 +19,15 @@
 
 			function validate(value) {
 				if (typeof value === "undefined") value = "";
-				var valid = value.indexOf(attrs.wizValEndsWith, value.length - attrs.wizValEndsWith.length) !== -1;
-				ngModel.$setValidity('wizValEndsWith', valid);
+				var testArray = scope.blacklist;
+				var valid = true;
+				for (var a = 0; a < testArray.length; a++) {
+					if (testArray[a].match(value)) {
+						valid = false;
+						break;
+					}
+				}
+				ngModel.$setValidity('wizValBlacklist', valid);
 				return value;
 			}
 		}
