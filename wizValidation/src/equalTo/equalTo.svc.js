@@ -1,33 +1,33 @@
 ﻿angular.module('wiz.validation.equalTo')
 
-.service('wizEqualToSvc', ['$filter', function ($filter) {
-	this.values = [];
-
-	this.cleanup = function () {
+	.service('wizEqualToSvc', ['$filter', function ($filter) {
 		this.values = [];
-	};
 
-	this.addValue = function (value) {
-		var existingValue = false;
-		for (var i = 0; i < this.values.length; i++) {
-			if (this.values[i].name === value.name) {
-				this.values[i] = value;
-				existingValue = true;
-				break;
-			}
-		}
-		if (!existingValue) this.values.push(value);
-	};
+		this.cleanup = function () {
+			this.values = [];
+		};
 
-	this.isEqual = function (group) {
-		var isEqual = true;
-		var groupValues = $filter('filter')(this.values, { group: group }, true);
-		for (var i = 0; i < groupValues.length; i++) {
-			if (groupValues[i].value !== groupValues[0].value) {
-				isEqual = false;
-				break;
+		this.addValue = function (value) {
+			var existingValue = false;
+			for (var i = 0; i < this.values.length; i++) {
+				if (this.values[i].name === value.name) {
+					this.values[i] = value;
+					existingValue = true;
+					break;
+				}
 			}
-		}
-		return isEqual;
-	};
-}]);
+			if (!existingValue) this.values.push(value);
+		};
+
+		this.isEqual = function (group) {
+			var isEqual = true;
+			var groupValues = $filter('filter')(this.values, { group: group }, true);
+			for (var i = 0; i < groupValues.length; i++) {
+				if (groupValues[i].value !== groupValues[0].value) {
+					isEqual = false;
+					break;
+				}
+			}
+			return isEqual;
+		};
+	}]);

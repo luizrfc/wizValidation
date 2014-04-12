@@ -1,7 +1,7 @@
 angular.module('demo.features.home')
 
-.controller('HomeCtrl', ['$scope', function ($scope) {
+	.controller('HomeCtrl', ['$scope', function ($scope) {
 
-	$scope.demo = {};
+		$scope.demo = {};
 
-}]);
+	}]);
