@@ -26,9 +26,6 @@ describe('At least one validation', function () {
 		expect(elem1.getAttribute('class')).not.toMatch('invalid');
 		expect(elem2.getAttribute('class')).not.toMatch('invalid');
 		expect(elem3.getAttribute('class')).not.toMatch('invalid');
-		elem1.clear();
-		elem2.clear();
-		elem3.clear();
 	});
 
 	it('should set invalid when none of the fields are filled in', function () {
