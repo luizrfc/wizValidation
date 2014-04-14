@@ -314,6 +314,7 @@ angular.module('wiz.validation.file')
         restrict: 'A',
         require: 'ngModel',
         scope: {
+            // array of valid file types e.g ['image/jpeg','image/gif']
             fileType: '=wizValFileTypes'
         },
         link: function (scope, elem, attr, ngModel) {
@@ -325,19 +326,16 @@ angular.module('wiz.validation.file')
             function validate(files) {
                 var valid = true;
 
+                // if file type attribute exists check it. 
                  if (scope.fileType) {
-
                     for (var i = 0; i < files.length; i++) {
 
                         if (scope.fileType.indexOf(files[i].type)===-1) {
                             valid = false;
-                            console.log('invalid');
                         }
                     }
                 }
-
                 ngModel.$setValidity('wizValFile', valid);
-
             }
         }
     };
