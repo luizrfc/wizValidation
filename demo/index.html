@@ -130,9 +130,30 @@
 			Ends with "finish":
 			<input type="text" name="endsWith" ng-model="demo.endsWith" wiz-val-ends-with="'finish'" ng-class="{invalid: demoForm.endsWith.$error.wizValEndsWith}" />
 		</label>
+        <label>
+            file:
+            <input type="file"
+                   name="file"
+                   ng-model="demo.file"
+                   wiz-val-file
+                   wiz-val-file-types="['image/jpeg','image/jpeg']"
+                   ng-class="{invalid: demoForm.file.$error.wizValFile}" />
+        </label>
+        <label>
+            file (multiple):
+            <input type="file"
+                   name="fileMultiple"
+                   multiple
+                   ng-model="demo.fileMultiple"
+                   wiz-val-file
+                   wiz-val-file-types="['image/jpeg','image/jpeg']"
+                   ng-class="{invalid: demoForm.file.$error.wizValFile}" />
+        </label>
 	</form>
+
+
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
-	<script src="app/libs/wizValidation/wizValidation.min.js"></script>
+	<script src="../wizValidation/wizValidation.js"></script>
 	<script src="app/features/home/home.mod.js"></script>
 	<script src="app/features/home/home.ctrl.js"></script>
 	<script src="app/app.js"></script>

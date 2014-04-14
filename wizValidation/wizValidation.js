@@ -16,6 +16,7 @@ angular.module('wiz.validation.atLeastOne', []);
 angular.module('wiz.validation.decimal', []);
 angular.module('wiz.validation.endsWith', []);
 angular.module('wiz.validation.equalTo', []);
+angular.module('wiz.validation.file', []);
 angular.module('wiz.validation.integer', []);
 angular.module('wiz.validation.notEqualTo', []);
 angular.module('wiz.validation.phone', []);
@@ -306,6 +307,41 @@ angular.module('wiz.validation.equalTo')
 		}
 	};
 }]);
+angular.module('wiz.validation.file')
+
+.directive('wizValFile', function () {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        scope: {
+            fileType: '=wizValFileTypes'
+        },
+        link: function (scope, elem, attr, ngModel) {
+
+            elem.bind('change', function () {
+                validate(elem[0].files);
+            });
+
+            function validate(files) {
+                var valid = true;
+
+                 if (scope.fileType) {
+
+                    for (var i = 0; i < files.length; i++) {
+
+                        if (scope.fileType.indexOf(files[i].type)===-1) {
+                            valid = false;
+                            console.log('invalid');
+                        }
+                    }
+                }
+
+                ngModel.$setValidity('wizValFile', valid);
+
+            }
+        }
+    };
+});
 angular.module('wiz.validation.integer')
 
 .directive('wizValInteger', function () {
