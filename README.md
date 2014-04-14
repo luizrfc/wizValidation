@@ -72,6 +72,13 @@ At least one field within the group must be different.
 ####Unique
 *Every* field within the group must be different from the rest.
 
+###Date of birth
+The date of birth validator works by calculating the latest date you can enter given the minimum age supplied to the directive:
+
+    <input type="date" name"dateOfBirth" wiz-val-date-of-birth="18" />
+
+In the above example your date of birth must be 18 or more years ago.
+
 ###Blacklist and Whitelist
 The values in a blacklist validated field must not equal any of the values provided to the validator. e.g.
 
