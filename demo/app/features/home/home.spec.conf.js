@@ -1,21 +1,21 @@
 exports.config = {
-    // The address of a running selenium server.
-    seleniumAddress: 'http://localhost:4444/wd/hub',
+	// The address of a running selenium server.
+	seleniumAddress: 'http://localhost:4444/wd/hub',
 
-    // Capabilities to be passed to the web-driver instance.
-    capabilities: {
-        'browserName': 'chrome'
-    },
+	// Capabilities to be passed to the web-driver instance.
+	capabilities: {
+		'browserName': 'chrome'
+	},
 
-    // Spec patterns are relative to the current working directly when
-    // protractor is called.
-    specs: ['specs/*.spec.js'],
+	// Spec patterns are relative to the current working directly when
+	// protractor is called.
+	specs: ['specs/*.spec.js'],
 
-    // Options to be passed to Jasmine-node.
-    jasmineNodeOpts: {
-        showColors: true,
-        defaultTimeoutInterval: 30000
-    },
+	// Options to be passed to Jasmine-node.
+	jasmineNodeOpts: {
+		showColors: true,
+		defaultTimeoutInterval: 30000
+	},
 
-    baseUrl: 'http://localhost:55163/' // Change this to whatever server you're running on locally
+	baseUrl: 'http://localhost:55163/' // Change this to whatever server you're running on locally
 };

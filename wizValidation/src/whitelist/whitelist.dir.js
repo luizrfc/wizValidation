@@ -1,12 +1,10 @@
-﻿angular.module('wiz.validation.endsWith')
+﻿angular.module('wiz.validation.whitelist')
 
-	.directive('wizValEndsWith', function () {
+	.directive('wizValWhitelist', function () {
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			scope: {
-				endsWith: '=wizValEndsWith'
-			},
+			scope: { whitelist: '=wizValWhitelist' },
 			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
@@ -22,10 +20,15 @@
 				function validate(value) {
 					var valid = false;
 					if (typeof value === "undefined") value = "";
-					if (typeof scope.endsWith !== "undefined") {
-						valid = value.indexOf(scope.endsWith, value.length - scope.endsWith.length) !== -1;
+					if (typeof scope.whitelist !== "undefined") {
+						for (var i = scope.whitelist.length - 1; i >= 0; i--) {
+							if (value === scope.whitelist[i]) {
+								valid = true;
+								break;
+							}
+						}
 					}
-					ngModel.$setValidity('wizValEndsWith', valid);
+					ngModel.$setValidity('wizValWhitelist', valid);
 					return value;
 				}
 			}

@@ -13,15 +13,22 @@ Example:
 
 
 ##Validators
-There are currently 7 validators available with more in the works:
+There are currently 14 validators available with more in the works:
 
 - integer
 - decimal
+- starts with
+- ends with
 - phone (currently UK only)
 - postcode
-- zipcode
+- zip code
 - at least one
 - equal to
+- not equal to
+- unique
+- date of birth
+- blacklist
+- whitelist
 
 All the validators follow the same pattern of prefixing, as an example for **Zipcode**:
 
@@ -52,6 +59,34 @@ However if you want more than one grouping specify the group name like this: `wi
 
     <input type="text" ng-model="user.email" wiz-val-equal-to="secondSet" />
     <input type="text" ng-model="user.confirmEmail" wiz-val-equal-to="secondSet" />
+
+###Equal to, Not equal to and Unique
+These three validators are rather similar in nature however they behave differently, please choose wisely:
+
+####Equal to
+All the fields within the group must be the same.
+
+####Not equal to
+At least one field within the group must be different.
+
+####Unique
+*Every* field within the group must be different from the rest.
+
+###Date of birth
+The date of birth validator works by calculating the latest date you can enter given the minimum age supplied to the directive:
+
+    <input type="date" name"dateOfBirth" wiz-val-date-of-birth="18" />
+
+In the above example your date of birth must be 18 or more years ago.
+
+###Blacklist and Whitelist
+The values in a blacklist validated field must not equal any of the values provided to the validator. e.g.
+
+    <input type="text" name="blacklist" wiz-val-blacklist="['red', 'orange', 'yellow']" />
+
+If you enter "red", "orange" or "yellow" into this input the field will be invalid.
+
+Conversely if you are using the whitelist validator you must use one of the values in the array, anything else would be invalid.
 
 ##Contributing
 Feel free to contribute. That's it.

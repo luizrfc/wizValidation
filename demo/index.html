@@ -13,16 +13,16 @@
 			padding: 10px;
 		}
 
-			label input {
-				display: block;
-				border: 1px solid grey;
-				padding: 5px;
-				-moz-box-sizing: border-box;
-				-webkit-box-sizing: border-box;
-				box-sizing: border-box;
-				border-radius: 6px;
-				outline: none;
-			}
+		label input {
+			display: block;
+			border: 1px solid grey;
+			padding: 5px;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			border-radius: 6px;
+			outline: none;
+		}
 
 		.invalid {
 			color: red;
@@ -31,131 +31,172 @@
 	</style>
 </head>
 <body ng-controller="HomeCtrl">
-	<form name="demoForm">
-		<label>
-			Integer:
-			<input type="number" name="integer" ng-model="demo.integer" wiz-val-integer ng-class="{invalid: demoForm.integer.$error.wizValInteger}" />
-		</label>
-		<label>
-			Decimal:
-			<input type="number" step=".5" name="decimal" ng-model="demo.decimal" wiz-val-decimal ng-class="{invalid: demoForm.decimal.$error.wizValDecimal}" />
-		</label>
-		<label>
-			Postcode:
-			<input type="text" name="postcode" ng-model="demo.postcode" wiz-val-postcode ng-class="{invalid: demoForm.postcode.$error.wizValPostcode}" />
-		</label>
-		<label>
-			Zipcode:
-			<input type="text" name="zipcode" ng-model="demo.zipcode" wiz-val-zipcode ng-class="{invalid: demoForm.zipcode.$error.wizValZipcode}" />
-		</label>
-		<label>
-			Phone:
-			<input type="text" name="phone" ng-model="demo.phone" wiz-val-phone ng-class="{invalid: demoForm.phone.$error.wizValPhone}" />
-		</label>
-		<label>
-			At least one in group 1
-			<input type="text" name="atleastone1" ng-model="demo.atleastone1" wiz-val-at-least-one ng-class="{invalid: demoForm.atleastone1.$error.wizValAtLeastOne}" />
-		</label>
-		<label>
-			<input type="text" name="atleastone2" ng-model="demo.atleastone2" wiz-val-at-least-one ng-class="{invalid: demoForm.atleastone2.$error.wizValAtLeastOne}" />
-		</label>
-		<label>
-			<input type="text" name="atleastone3" ng-model="demo.atleastone3" wiz-val-at-least-one ng-class="{invalid: demoForm.atleastone3.$error.wizValAtLeastOne}" />
-		</label>
-		<label>
-			At least one in group 2
-			<input type="text" name="atleastoneA" ng-model="demo.atleastoneA" wiz-val-at-least-one="group2" ng-class="{invalid: demoForm.atleastoneA.$error.wizValAtLeastOne}" />
-		</label>
-		<label>
-			<input type="text" name="atleastoneB" ng-model="demo.atleastoneB" wiz-val-at-least-one="group2" ng-class="{invalid: demoForm.atleastoneB.$error.wizValAtLeastOne}" />
-		</label>
-		<label>
-			<input type="text" name="atleastoneC" ng-model="demo.atleastoneC" wiz-val-at-least-one="group2" ng-class="{invalid: demoForm.atleastoneC.$error.wizValAtLeastOne}" />
-		</label>
-		<label>
-			Must equal group 1
-			<input type="text" name="equalTo1" ng-model="demo.equalTo1" wiz-val-equal-to ng-class="{invalid: demoForm.equalTo1.$error.wizValEqualTo}" />
-		</label>
-		<label>
-			<input type="text" name="equalTo2" ng-model="demo.equalTo2" wiz-val-equal-to ng-class="{invalid: demoForm.equalTo2.$error.wizValEqualTo}" />
-		</label>
-		<label>
-			<input type="text" name="equalTo3" ng-model="demo.equalTo3" wiz-val-equal-to ng-class="{invalid: demoForm.equalTo3.$error.wizValEqualTo}" />
-		</label>
-		<label>
-			Must equal group 2
-			<input type="text" name="equalToA" ng-model="demo.equalToA" wiz-val-equal-to="group2" ng-class="{invalid: demoForm.equalToA.$error.wizValEqualTo}" />
-		</label>
-		<label>
-			<input type="text" name="equalToB" ng-model="demo.equalToB" wiz-val-equal-to="group2" ng-class="{invalid: demoForm.equalToB.$error.wizValEqualTo}" />
-		</label>
-		<label>
-			<input type="text" name="equalToC" ng-model="demo.equalToC" wiz-val-equal-to="group2" ng-class="{invalid: demoForm.equalToC.$error.wizValEqualTo}" />
-		</label>
-		<label>
-			Must not equal group 1
-			<input type="text" name="notEqualTo1" ng-model="demo.notEqualTo1" wiz-val-not-equal-to="group1" ng-class="{invalid: demoForm.notEqualTo1.$error.wizValNotEqualTo}" />
-		</label>
-		<label>
-			<input type="text" name="notEqualTo2" ng-model="demo.notEqualTo2" wiz-val-not-equal-to="group1" ng-class="{invalid: demoForm.notEqualTo2.$error.wizValNotEqualTo}" />
-		</label>
-		<label>
-			<input type="text" name="notEqualTo3" ng-model="demo.notEqualTo3" wiz-val-not-equal-to="group1" ng-class="{invalid: demoForm.notEqualTo3.$error.wizValNotEqualTo}" />
-		</label>
-		<label>
-			Must not equal group 2
-			<input type="text" name="notEqualToA" ng-model="demo.notEqualToA" wiz-val-not-equal-to="group2" ng-class="{invalid: demoForm.notEqualToA.$error.wizValNotEqualTo}" />
-		</label>
-		<label>
-			<input type="text" name="notEqualToB" ng-model="demo.notEqualToB" wiz-val-not-equal-to="group2" ng-class="{invalid: demoForm.notEqualToB.$error.wizValNotEqualTo}" />
-		</label>
-		<label>
-			<input type="text" name="notEqualToC" ng-model="demo.notEqualToC" wiz-val-not-equal-to="group2" ng-class="{invalid: demoForm.notEqualToC.$error.wizValNotEqualTo}" />
-		</label>
-		<label>
-			Unique group 1
-			<input type="text" name="unique1" ng-model="demo.unique1" wiz-val-unique ng-class="{invalid: demoForm.unique1.$error.wizValUnique}" />
-		</label>
-		<label>
-			<input type="text" name="unique2" ng-model="demo.unique2" wiz-val-unique ng-class="{invalid: demoForm.unique2.$error.wizValUnique}" />
-		</label>
-		<label>
-			<input type="text" name="unique3" ng-model="demo.unique3" wiz-val-unique ng-class="{invalid: demoForm.unique3.$error.wizValUnique}" />
-		</label>
-		<label>
-			Starts with "begin":
-			<input type="text" name="startsWith" ng-model="demo.startsWith" wiz-val-starts-with="'begin'" ng-class="{invalid: demoForm.startsWith.$error.wizValStartsWith}" />
-		</label>
-		<label>
-			Ends with "finish":
-			<input type="text" name="endsWith" ng-model="demo.endsWith" wiz-val-ends-with="'finish'" ng-class="{invalid: demoForm.endsWith.$error.wizValEndsWith}" />
-		</label>
-        <label>
-            file:
-            <input type="file"
-                   name="file"
-                   ng-model="demo.file"
-                   wiz-val-file
-                   wiz-val-file-types="['image/jpeg','image/jpeg']"
-                   ng-class="{invalid: demoForm.file.$error.wizValFile}" />
-        </label>
-        <label>
-            file (multiple):
-            <input type="file"
-                   name="fileMultiple"
-                   multiple
-                   ng-model="demo.fileMultiple"
-                   wiz-val-file
-                   wiz-val-file-types="['image/jpeg','image/gif']"
-                   ng-class="{invalid: demoForm.file.$error.wizValFile}" />
-        </label>
-	</form>
-
-
-	<script src="app/libs/angular-1.2.15/angular.js"></script>
-	<script src="../wizValidation/wizValidation.js"></script>
-	<script src="app/features/home/home.mod.js"></script>
-	<script src="app/features/home/home.ctrl.js"></script>
-	<script src="app/app.js"></script>
+<form name="demoForm">
+	<label>
+		Integer:
+		<input type="number" name="integer" ng-model="demo.integer" wiz-val-integer
+					 ng-class="{invalid: demoForm.integer.$error.wizValInteger}"/>
+	</label>
+	<label>
+		Decimal:
+		<input type="number" step=".5" name="decimal" ng-model="demo.decimal" wiz-val-decimal="3"
+					 ng-class="{invalid: demoForm.decimal.$error.wizValDecimal}"/>
+	</label>
+	<label>
+		Postcode:
+		<input type="text" name="postcode" ng-model="demo.postcode" wiz-val-postcode
+					 ng-class="{invalid: demoForm.postcode.$error.wizValPostcode}"/>
+	</label>
+	<label>
+		Zipcode:
+		<input type="text" name="zipcode" ng-model="demo.zipcode" wiz-val-zipcode
+					 ng-class="{invalid: demoForm.zipcode.$error.wizValZipcode}"/>
+	</label>
+	<label>
+		Phone:
+		<input type="text" name="phone" ng-model="demo.phone" wiz-val-phone
+					 ng-class="{invalid: demoForm.phone.$error.wizValPhone}"/>
+	</label>
+	<label>
+		Date of birth (18 and over):
+		<input type="date" name="dateOfBirth" ng-model="demo.dateOfBirth" wiz-val-date-of-birth="18"
+					 ng-class="{invalid: demoForm.dateOfBirth.$error.wizValDateOfBirth}"/>
+	</label>
+	<label>
+		At least one in group 1
+		<input type="text" name="atleastone1" ng-model="demo.atleastone1" wiz-val-at-least-one
+					 ng-class="{invalid: demoForm.atleastone1.$error.wizValAtLeastOne}"/>
+	</label>
+	<label>
+		<input type="text" name="atleastone2" ng-model="demo.atleastone2" wiz-val-at-least-one
+					 ng-class="{invalid: demoForm.atleastone2.$error.wizValAtLeastOne}"/>
+	</label>
+	<label>
+		<input type="text" name="atleastone3" ng-model="demo.atleastone3" wiz-val-at-least-one
+					 ng-class="{invalid: demoForm.atleastone3.$error.wizValAtLeastOne}"/>
+	</label>
+	<label>
+		At least one in group 2
+		<input type="text" name="atleastoneA" ng-model="demo.atleastoneA" wiz-val-at-least-one="group2"
+					 ng-class="{invalid: demoForm.atleastoneA.$error.wizValAtLeastOne}"/>
+	</label>
+	<label>
+		<input type="text" name="atleastoneB" ng-model="demo.atleastoneB" wiz-val-at-least-one="group2"
+					 ng-class="{invalid: demoForm.atleastoneB.$error.wizValAtLeastOne}"/>
+	</label>
+	<label>
+		<input type="text" name="atleastoneC" ng-model="demo.atleastoneC" wiz-val-at-least-one="group2"
+					 ng-class="{invalid: demoForm.atleastoneC.$error.wizValAtLeastOne}"/>
+	</label>
+	<label>
+		Must equal group 1
+		<input type="text" name="equalTo1" ng-model="demo.equalTo1" wiz-val-equal-to
+					 ng-class="{invalid: demoForm.equalTo1.$error.wizValEqualTo}"/>
+	</label>
+	<label>
+		<input type="text" name="equalTo2" ng-model="demo.equalTo2" wiz-val-equal-to
+					 ng-class="{invalid: demoForm.equalTo2.$error.wizValEqualTo}"/>
+	</label>
+	<label>
+		<input type="text" name="equalTo3" ng-model="demo.equalTo3" wiz-val-equal-to
+					 ng-class="{invalid: demoForm.equalTo3.$error.wizValEqualTo}"/>
+	</label>
+	<label>
+		Must equal group 2
+		<input type="text" name="equalToA" ng-model="demo.equalToA" wiz-val-equal-to="group2"
+					 ng-class="{invalid: demoForm.equalToA.$error.wizValEqualTo}"/>
+	</label>
+	<label>
+		<input type="text" name="equalToB" ng-model="demo.equalToB" wiz-val-equal-to="group2"
+					 ng-class="{invalid: demoForm.equalToB.$error.wizValEqualTo}"/>
+	</label>
+	<label>
+		<input type="text" name="equalToC" ng-model="demo.equalToC" wiz-val-equal-to="group2"
+					 ng-class="{invalid: demoForm.equalToC.$error.wizValEqualTo}"/>
+	</label>
+	<label>
+		Must not equal group 1
+		<input type="text" name="notEqualTo1" ng-model="demo.notEqualTo1" wiz-val-not-equal-to="group1"
+					 ng-class="{invalid: demoForm.notEqualTo1.$error.wizValNotEqualTo}"/>
+	</label>
+	<label>
+		<input type="text" name="notEqualTo2" ng-model="demo.notEqualTo2" wiz-val-not-equal-to="group1"
+					 ng-class="{invalid: demoForm.notEqualTo2.$error.wizValNotEqualTo}"/>
+	</label>
+	<label>
+		<input type="text" name="notEqualTo3" ng-model="demo.notEqualTo3" wiz-val-not-equal-to="group1"
+					 ng-class="{invalid: demoForm.notEqualTo3.$error.wizValNotEqualTo}"/>
+	</label>
+	<label>
+		Must not equal group 2
+		<input type="text" name="notEqualToA" ng-model="demo.notEqualToA" wiz-val-not-equal-to="group2"
+					 ng-class="{invalid: demoForm.notEqualToA.$error.wizValNotEqualTo}"/>
+	</label>
+	<label>
+		<input type="text" name="notEqualToB" ng-model="demo.notEqualToB" wiz-val-not-equal-to="group2"
+					 ng-class="{invalid: demoForm.notEqualToB.$error.wizValNotEqualTo}"/>
+	</label>
+	<label>
+		<input type="text" name="notEqualToC" ng-model="demo.notEqualToC" wiz-val-not-equal-to="group2"
+					 ng-class="{invalid: demoForm.notEqualToC.$error.wizValNotEqualTo}"/>
+	</label>
+	<label>
+		Unique group 1
+		<input type="text" name="unique1" ng-model="demo.unique1" wiz-val-unique="group1"
+					 ng-class="{invalid: demoForm.unique1.$error.wizValUnique}"/>
+	</label>
+	<label>
+		<input type="text" name="unique2" ng-model="demo.unique2" wiz-val-unique="group1"
+					 ng-class="{invalid: demoForm.unique2.$error.wizValUnique}"/>
+	</label>
+	<label>
+		<input type="text" name="unique3" ng-model="demo.unique3" wiz-val-unique="group1"
+					 ng-class="{invalid: demoForm.unique3.$error.wizValUnique}"/>
+	</label>
+	<label>
+		Starts with "begin":
+		<input type="text" name="startsWith" ng-model="demo.startsWith" wiz-val-starts-with="'begin'"
+					 ng-class="{invalid: demoForm.startsWith.$error.wizValStartsWith}"/>
+	</label>
+	<label>
+		Ends with "finish":
+		<input type="text" name="endsWith" ng-model="demo.endsWith" wiz-val-ends-with="'finish'"
+					 ng-class="{invalid: demoForm.endsWith.$error.wizValEndsWith}"/>
+	</label>
+	<label>
+		Blacklist: "red", "orange", "yellow"
+		<input type="text" name="blacklist" ng-model="demo.blacklist" wiz-val-blacklist="['red', 'orange', 'yellow']"
+					 ng-class="{invalid: demoForm.blacklist.$error.wizValBlacklist}"/>
+	</label>
+	<label>
+		Whitelist: "red", "orange", "yellow"
+		<input type="text" name="whitelist" ng-model="demo.whitelist" wiz-val-whitelist="['red', 'orange', 'yellow']"
+					 ng-class="{invalid: demoForm.whitelist.$error.wizValWhitelist}"/>
+	</label>
+    <label>
+        file:
+        <input type="file"
+               name="file"
+               ng-model="demo.file"
+               wiz-val-file
+               wiz-val-file-types="['image/jpeg','image/jpeg']"
+               ng-class="{invalid: demoForm.file.$error.wizValFile}" />
+    </label>
+    <label>
+        file (multiple):
+        <input type="file"
+               name="fileMultiple"
+               multiple
+               ng-model="demo.fileMultiple"
+               wiz-val-file
+               wiz-val-file-types="['image/jpeg','image/gif']"
+               ng-class="{invalid: demoForm.file.$error.wizValFile}" />
+    </label>
+</form>
+<script src="app/libs/angular-1.2.15/angular.js"></script>
+<script src="app/libs/wizValidation/wizValidation.min.js"></script>
+<script src="app/features/home/home.mod.js"></script>
+<script src="app/features/home/home.ctrl.js"></script>
+<script src="app/app.js"></script>
 </body>
 </html>
