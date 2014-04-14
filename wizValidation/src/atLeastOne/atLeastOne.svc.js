@@ -8,6 +8,7 @@
 		};
 
 		this.addValue = function (value) {
+			if (typeof value.value === "undefined") value.value = "";
 			var existingValue = false;
 			for (var i = 0; i < this.values.length; i++) {
 				if (this.values[i].name === value.name) {

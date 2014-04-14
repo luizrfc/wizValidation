@@ -41,6 +41,7 @@ angular.module('wiz.validation.atLeastOne')
 		};
 
 		this.addValue = function (value) {
+			if (typeof value.value === "undefined") value.value = "";
 			var existingValue = false;
 			for (var i = 0; i < this.values.length; i++) {
 				if (this.values[i].name === value.name) {
@@ -75,6 +76,7 @@ angular.module('wiz.validation.equalTo')
 		};
 
 		this.addValue = function (value) {
+			if (typeof value.value === "undefined") value.value = "";
 			var existingValue = false;
 			for (var i = 0; i < this.values.length; i++) {
 				if (this.values[i].name === value.name) {
@@ -84,6 +86,7 @@ angular.module('wiz.validation.equalTo')
 				}
 			}
 			if (!existingValue) this.values.push(value);
+			console.log(this.values);
 		};
 
 		this.isEqual = function (group) {
@@ -108,6 +111,7 @@ angular.module('wiz.validation.notEqualTo')
 		};
 
 		this.addValue = function (value) {
+			if (typeof value.value === "undefined") value.value = "";
 			var existingValue = false;
 			for (var i = 0; i < this.values.length; i++) {
 				if (this.values[i].name === value.name) {
@@ -141,6 +145,7 @@ angular.module('wiz.validation.unique')
 		};
 
 		this.addValue = function (value) {
+			if (typeof value.value === "undefined") value.value = "";
 			var existingValue = false;
 			for (var i = 0; i < this.values.length; i++) {
 				if (this.values[i].name === value.name) {
