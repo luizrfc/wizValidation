@@ -11,6 +11,7 @@
 	'wiz.validation.unique',
 	'wiz.validation.startsWith',
 	'wiz.validation.endsWith',
+    'wiz.validation.file',
 	'wiz.validation.blacklist',
-	'wiz.validation.whitelist'
-]);
+	'wiz.validation.whitelist']);
+

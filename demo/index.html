@@ -173,6 +173,25 @@
 		<input type="text" name="whitelist" ng-model="demo.whitelist" wiz-val-whitelist="['red', 'orange', 'yellow']"
 					 ng-class="{invalid: demoForm.whitelist.$error.wizValWhitelist}"/>
 	</label>
+    <label>
+        file:
+        <input type="file"
+               name="file"
+               ng-model="demo.file"
+               wiz-val-file
+               wiz-val-file-types="['image/jpeg','image/jpeg']"
+               ng-class="{invalid: demoForm.file.$error.wizValFile}" />
+    </label>
+    <label>
+        file (multiple):
+        <input type="file"
+               name="fileMultiple"
+               multiple
+               ng-model="demo.fileMultiple"
+               wiz-val-file
+               wiz-val-file-types="['image/jpeg','image/gif']"
+               ng-class="{invalid: demoForm.file.$error.wizValFile}" />
+    </label>
 </form>
 <script src="app/libs/angular-1.2.15/angular.js"></script>
 <script src="app/libs/wizValidation/wizValidation.min.js"></script>
