@@ -192,9 +192,14 @@
                wiz-val-file-types="['image/jpeg','image/gif']"
                ng-class="{invalid: demoForm.file.$error.wizValFile}" />
     </label>
+	<label>
+		Require Other: 
+		<input type="text" name="requireOther" ng-model="demo.requireother" wiz-val-require-other="[demoForm.integer, demoForm.decimal]" 
+					 ng-class="{invalid: demoForm.requireOther.$error.wizValRequireOther}"/>
+	</label>
 </form>
 <script src="app/libs/angular-1.2.15/angular.js"></script>
-<script src="app/libs/wizValidation/wizValidation.min.js"></script>
+<script src="app/libs/wizValidation/wizValidation.js"></script>
 <script src="app/features/home/home.mod.js"></script>
 <script src="app/features/home/home.ctrl.js"></script>
 <script src="app/app.js"></script>
