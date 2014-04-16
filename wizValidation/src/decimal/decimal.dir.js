@@ -7,7 +7,7 @@
 			scope: {
 				decimalPlaces: '=wizValDecimal'
 			},
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {

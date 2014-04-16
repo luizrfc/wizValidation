@@ -8,7 +8,7 @@
 				// array of valid file types e.g ['image/jpeg','image/gif']
 				fileType: '=wizValFileTypes'
 			},
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				elem.bind('change', function () {
 					validate(elem[0].files);

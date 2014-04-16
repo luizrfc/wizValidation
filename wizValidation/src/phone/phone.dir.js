@@ -4,7 +4,7 @@
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {

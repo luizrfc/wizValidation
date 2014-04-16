@@ -312,7 +312,7 @@ angular.module('wiz.validation.decimal')
 			scope: {
 				decimalPlaces: '=wizValDecimal'
 			},
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {
@@ -378,7 +378,7 @@ angular.module('wiz.validation.equalTo')
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {
@@ -394,14 +394,14 @@ angular.module('wiz.validation.equalTo')
 
 				function addValue(value) {
 					wizEqualToSvc.addValue({
-						name: attr.ngModel,
-						group: attr.wizValEqualTo,
+						name: attrs.ngModel,
+						group: attrs.wizValEqualTo,
 						value: value
 					});
 				}
 
 				function validate() {
-					var valid = wizEqualToSvc.isEqual(attr.wizValEqualTo);
+					var valid = wizEqualToSvc.isEqual(attrs.wizValEqualTo);
 					ngModel.$setValidity('wizValEqualTo', valid);
 				}
 
@@ -428,7 +428,7 @@ angular.module('wiz.validation.file')
 				// array of valid file types e.g ['image/jpeg','image/gif']
 				fileType: '=wizValFileTypes'
 			},
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				elem.bind('change', function () {
 					validate(elem[0].files);
@@ -457,7 +457,7 @@ angular.module('wiz.validation.integer')
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {
@@ -484,7 +484,7 @@ angular.module('wiz.validation.notEqualTo')
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {
@@ -500,14 +500,14 @@ angular.module('wiz.validation.notEqualTo')
 
 				function addValue(value) {
 					wizNotEqualToSvc.addValue({
-						name: attr.ngModel,
-						group: attr.wizValNotEqualTo,
+						name: attrs.ngModel,
+						group: attrs.wizValNotEqualTo,
 						value: value
 					});
 				}
 
 				function validate() {
-					var valid = !wizNotEqualToSvc.isEqual(attr.wizValNotEqualTo);
+					var valid = !wizNotEqualToSvc.isEqual(attrs.wizValNotEqualTo);
 					ngModel.$setValidity('wizValNotEqualTo', valid);
 				}
 
@@ -530,7 +530,7 @@ angular.module('wiz.validation.phone')
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {
@@ -557,7 +557,7 @@ angular.module('wiz.validation.postcode')
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {
@@ -652,7 +652,7 @@ angular.module('wiz.validation.unique')
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {
@@ -668,14 +668,14 @@ angular.module('wiz.validation.unique')
 
 				function addValue(value) {
 					wizUniqueSvc.addValue({
-						name: attr.ngModel,
-						group: attr.wizValUnique,
+						name: attrs.ngModel,
+						group: attrs.wizValUnique,
 						value: value
 					});
 				}
 
 				function validate() {
-					var valid = wizUniqueSvc.isUnique(attr.wizValUnique);
+					var valid = wizUniqueSvc.isUnique(attrs.wizValUnique);
 					ngModel.$setValidity('wizValUnique', valid);
 				}
 
@@ -735,7 +735,7 @@ angular.module('wiz.validation.zipcode')
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {

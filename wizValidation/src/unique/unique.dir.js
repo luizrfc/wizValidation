@@ -4,7 +4,7 @@
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			link: function (scope, elem, attr, ngModel) {
+			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
 				ngModel.$parsers.unshift(function (value) {
@@ -20,14 +20,14 @@
 
 				function addValue(value) {
 					wizUniqueSvc.addValue({
-						name: attr.ngModel,
-						group: attr.wizValUnique,
+						name: attrs.ngModel,
+						group: attrs.wizValUnique,
 						value: value
 					});
 				}
 
 				function validate() {
-					var valid = wizUniqueSvc.isUnique(attr.wizValUnique);
+					var valid = wizUniqueSvc.isUnique(attrs.wizValUnique);
 					ngModel.$setValidity('wizValUnique', valid);
 				}
 
