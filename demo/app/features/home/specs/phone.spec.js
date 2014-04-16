@@ -1,6 +1,6 @@
 describe('Phone validation', function () {
 	it('should allow local UK phone number formats', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.phone'));
 
@@ -20,7 +20,7 @@ describe('Phone validation', function () {
 	});
 
 	it('should allow international UK phone number formats', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.phone'));
 
@@ -35,7 +35,7 @@ describe('Phone validation', function () {
 	});
 
 	it('should set invalid when not phone number format', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.phone'));
 

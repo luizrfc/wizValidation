@@ -39,8 +39,13 @@
 	</label>
 	<label>
 		Decimal:
-		<input type="number" step=".5" name="decimal" ng-model="demo.decimal" wiz-val-decimal="3"
+		<input type="number" step=".5" name="decimal" ng-model="demo.decimal" wiz-val-decimal
 					 ng-class="{invalid: demoForm.decimal.$error.wizValDecimal}"/>
+	</label>
+	<label>
+		Decimal 3 places:
+		<input type="number" step=".5" name="decimalPlaces" ng-model="demo.decimalPlaces" wiz-val-decimal="3"
+					 ng-class="{invalid: demoForm.decimalPlaces.$error.wizValDecimal}"/>
 	</label>
 	<label>
 		Postcode:

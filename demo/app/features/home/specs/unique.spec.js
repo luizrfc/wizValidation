@@ -1,6 +1,6 @@
 describe('Unique validation', function () {
 	it('should allow when all fields are different', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem1 = element(by.model('demo.unique1'));
 		var elem2 = element(by.model('demo.unique2'));
@@ -15,7 +15,7 @@ describe('Unique validation', function () {
 	});
 
 	it('should set invalid when 2 or more of the fields are the same', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem1 = element(by.model('demo.unique1'));
 		var elem2 = element(by.model('demo.unique2'));

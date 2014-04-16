@@ -1,6 +1,6 @@
 ﻿angular.module('wiz.validation.atLeastOne')
 
-	.service('wizAtLeastOneSvc', ['$filter', function ($filter) {
+	.service('wizAtLeastOneSvc', function () {
 		this.values = [];
 
 		this.cleanup = function () {
@@ -32,4 +32,4 @@
 			}
 			return isEmpty;
 		};
-	}]);
+	});

@@ -1,6 +1,6 @@
 describe('Blacklist validation', function () {
 	it('should allow words not in the black list', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.blacklist'));
 
@@ -20,7 +20,7 @@ describe('Blacklist validation', function () {
 	});
 
 	it('should set invalid when word appears in blacklist', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.blacklist'));
 

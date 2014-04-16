@@ -1,6 +1,6 @@
 describe('Not equal to validation', function () {
 	it('should allow when at least on field is different', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem1 = element(by.model('demo.notEqualTo1'));
 		var elem2 = element(by.model('demo.notEqualTo2'));
@@ -26,7 +26,7 @@ describe('Not equal to validation', function () {
 	});
 
 	it('should set invalid when all fields are the same', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem1 = element(by.model('demo.notEqualTo1'));
 		var elem2 = element(by.model('demo.notEqualTo2'));

@@ -1,6 +1,6 @@
 describe('Zipcode validation', function () {
 	it('should allow standard 5-dgit US zipcode format', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.zipcode'));
 
@@ -10,7 +10,7 @@ describe('Zipcode validation', function () {
 	});
 
 	it('should allow standard 5 hyphen 4-dgit US zipcode format', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.zipcode'));
 
@@ -20,7 +20,7 @@ describe('Zipcode validation', function () {
 	});
 
 	it('should set invalid when not zipcode format', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.zipcode'));
 

@@ -1,6 +1,6 @@
 describe('Equal to validation', function () {
 	it('should allow when all fields are the same', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem1 = element(by.model('demo.equalTo1'));
 		var elem2 = element(by.model('demo.equalTo2'));
@@ -15,7 +15,7 @@ describe('Equal to validation', function () {
 	});
 
 	it('should set invalid when one of the fields are different', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem1 = element(by.model('demo.equalTo1'));
 		var elem2 = element(by.model('demo.equalTo2'));

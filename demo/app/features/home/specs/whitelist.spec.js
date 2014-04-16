@@ -1,6 +1,6 @@
 describe('Whitelist validation', function () {
 	it('should allow words in the whitelist', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.whitelist'));
 
@@ -20,7 +20,7 @@ describe('Whitelist validation', function () {
 	});
 
 	it('should set invalid when word do not appear in whitelist', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.whitelist'));
 

@@ -11,7 +11,7 @@ angular.module('wiz.validation', [
 	'wiz.validation.unique',
 	'wiz.validation.startsWith',
 	'wiz.validation.endsWith',
-    'wiz.validation.file',
+	'wiz.validation.file',
 	'wiz.validation.blacklist',
 	'wiz.validation.whitelist',
 	'wiz.validation.requireOther']);
@@ -37,7 +37,7 @@ angular.module('wiz.validation.whitelist', []);
 angular.module('wiz.validation.zipcode', []);
 angular.module('wiz.validation.atLeastOne')
 
-	.service('wizAtLeastOneSvc', ['$filter', function ($filter) {
+	.service('wizAtLeastOneSvc', function () {
 		this.values = [];
 
 		this.cleanup = function () {
@@ -69,7 +69,7 @@ angular.module('wiz.validation.atLeastOne')
 			}
 			return isEmpty;
 		};
-	}]);
+	});
 angular.module('wiz.validation.equalTo')
 
 	.service('wizEqualToSvc', ['$filter', function ($filter) {
@@ -325,9 +325,9 @@ angular.module('wiz.validation.decimal')
 				});
 
 				function validate(value) {
-					var pattern = "^-?([0-9]+(\.[0-9]+))$";
+					var pattern = "^-?([0-9]+)\\.([0-9]+)$";
 					if (/^-?[0-9]+$/.test(scope.decimalPlaces)) {
-						pattern = "^-?([0-9]+(\.[0-9]{1," + scope.decimalPlaces + "}))$";
+						pattern = "^-?([0-9]+)\\.([0-9]{1," + scope.decimalPlaces + "})$";
 					}
 					var regEx = new RegExp(pattern);
 					var valid = regEx.test(value);
@@ -420,37 +420,37 @@ angular.module('wiz.validation.equalTo')
 
 angular.module('wiz.validation.file')
 
-.directive('wizValFile', function () {
-    return {
-        restrict: 'A',
-        require: 'ngModel',
-        scope: {
-            // array of valid file types e.g ['image/jpeg','image/gif']
-            fileType: '=wizValFileTypes'
-        },
-        link: function (scope, elem, attr, ngModel) {
+	.directive('wizValFile', function () {
+		return {
+			restrict: 'A',
+			require: 'ngModel',
+			scope: {
+				// array of valid file types e.g ['image/jpeg','image/gif']
+				fileType: '=wizValFileTypes'
+			},
+			link: function (scope, elem, attr, ngModel) {
 
-            elem.bind('change', function () {
-                validate(elem[0].files);
-            });
+				elem.bind('change', function () {
+					validate(elem[0].files);
+				});
 
-            function validate(files) {
-                var valid = true;
+				function validate(files) {
+					var valid = true;
 
-                // if file type attribute exists check it. 
-                 if (scope.fileType) {
-                    for (var i = 0; i < files.length; i++) {
+					// if file type attribute exists check it.
+					if (scope.fileType) {
+						for (var i = 0; i < files.length; i++) {
 
-                        if (scope.fileType.indexOf(files[i].type)===-1) {
-                            valid = false;
-                        }
-                    }
-                }
-                ngModel.$setValidity('wizValFile', valid);
-            }
-        }
-    };
-});
+							if (scope.fileType.indexOf(files[i].type) === -1) {
+								valid = false;
+							}
+						}
+					}
+					ngModel.$setValidity('wizValFile', valid);
+				}
+			}
+		};
+	});
 angular.module('wiz.validation.integer')
 
 	.directive('wizValInteger', function () {
@@ -581,40 +581,40 @@ angular.module('wiz.validation.postcode')
 
 angular.module('wiz.validation.requireOther')
 
-.directive('wizValRequireOther', function () {
-	return {
-		restrict: 'A',
-		require: 'ngModel',
-		scope: { elementsToCheck: '=wizValRequireOther' },
-		link: function (scope, elem, attrs, ngModel) {
+	.directive('wizValRequireOther', function () {
+		return {
+			restrict: 'A',
+			require: 'ngModel',
+			scope: { elementsToCheck: '=wizValRequireOther' },
+			link: function (scope, elem, attrs, ngModel) {
 
-			//For DOM -> model validation
-			ngModel.$parsers.unshift(function (value) {
-				return validate(value);
-			});
+				//For DOM -> model validation
+				ngModel.$parsers.unshift(function (value) {
+					return validate(value);
+				});
 
-			//For model -> DOM validation
-			ngModel.$formatters.unshift(function (value) {
-				return validate(value);
-			});
+				//For model -> DOM validation
+				ngModel.$formatters.unshift(function (value) {
+					return validate(value);
+				});
 
-			function validate(value) {
-				if (typeof value === "undefined") value = "";
-				var valid = true;
-				if (typeof scope.elementsToCheck !== "undefined") {
-					for (var i = scope.elementsToCheck.length - 1; i >= 0; i--) {
-						if (!scope.elementsToCheck[i].$valid || value == "") {
-							valid = false;
-							break;
+				function validate(value) {
+					if (typeof value === "undefined") value = "";
+					var valid = true;
+					if (typeof scope.elementsToCheck !== "undefined") {
+						for (var i = scope.elementsToCheck.length - 1; i >= 0; i--) {
+							if (!scope.elementsToCheck[i].$valid || value == "") {
+								valid = false;
+								break;
+							}
 						}
 					}
+					ngModel.$setValidity('wizValRequireOther', valid);
+					return value;
 				}
-				ngModel.$setValidity('wizValRequireOther', valid);
-				return value;
 			}
-		}
-	};
-});
+		};
+	});
 angular.module('wiz.validation.startsWith')
 
 	.directive('wizValStartsWith', function () {

@@ -1,13 +1,12 @@
 describe('Date of birth validation', function () {
 
 	var today = new Date();
-	var birthDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
 	var day = today.getDate();
 	var month = today.getMonth();
 	var year = today.getFullYear() - 18;
 
 	it('should allow birth dates of people 18', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.dateOfBirth'));
 
@@ -17,7 +16,7 @@ describe('Date of birth validation', function () {
 	});
 
 	it('should allow birth dates of people over 18', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.dateOfBirth'));
 
@@ -27,7 +26,7 @@ describe('Date of birth validation', function () {
 	});
 
 	it('should set invalid when younger than 18', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.dateOfBirth'));
 

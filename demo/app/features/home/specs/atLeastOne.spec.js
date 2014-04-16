@@ -1,6 +1,6 @@
 describe('At least one validation', function () {
 	it('should allow one field to be filled in', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem1 = element(by.model('demo.atleastone1'));
 		var elem2 = element(by.model('demo.atleastone2'));
@@ -29,7 +29,7 @@ describe('At least one validation', function () {
 	});
 
 	it('should set invalid when none of the fields are filled in', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem1 = element(by.model('demo.atleastone1'));
 		var elem2 = element(by.model('demo.atleastone2'));

@@ -1,6 +1,6 @@
 describe('Postcode validation', function () {
 	it('should allow standard UK postcode formats', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.postcode'));
 
@@ -36,7 +36,7 @@ describe('Postcode validation', function () {
 	});
 
 	it('should set invalid when not postcode format', function () {
-		browser.get('/ngValidation/demo/index.html');
+		browser.get('demo/index.html');
 
 		var elem = element(by.model('demo.postcode'));
 
