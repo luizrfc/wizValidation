@@ -6,7 +6,7 @@
 			require: 'ngModel',
 			scope: {
 				// array of valid file types e.g ['image/jpeg','image/gif']
-				fileType: '=wizValFileTypes'
+				fileTypes: '=wizValFileTypes'
 			},
 			link: function (scope, elem, attrs, ngModel) {
 
@@ -18,10 +18,9 @@
 					var valid = true;
 
 					// if file type attribute exists check it.
-					if (scope.fileType) {
+					if (scope.fileTypes) {
 						for (var i = 0; i < files.length; i++) {
-
-							if (scope.fileType.indexOf(files[i].type) === -1) {
+							if (scope.fileTypes.indexOf(files[i].type) === -1) {
 								valid = false;
 							}
 						}
