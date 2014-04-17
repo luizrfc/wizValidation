@@ -199,7 +199,7 @@
     </label>
 	<label>
 		Require Other: 
-		<input type="text" name="requireOther" ng-model="demo.requireother" wiz-val-require-other="[demoForm.integer, demoForm.decimal]" 
+		<input type="text" name="requireOther" ng-model="demo.requireother" wiz-val-require-other="[demoForm.integer.$valid, demoForm.decimal.$valid]" 
 					 ng-class="{invalid: demoForm.requireOther.$error.wizValRequireOther}"/>
 	</label>
 </form>
