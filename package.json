@@ -13,6 +13,6 @@
 		"grunt-protractor-webdriver": "^0.1.6"
 	},
 	"scripts": {
-		"test": "grunt test"
+		"test": "grunt test:saucelabs"
 	}
 }

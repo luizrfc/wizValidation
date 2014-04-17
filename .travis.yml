@@ -1,7 +1,25 @@
 language: node_js
+node_js:
+  - "0.10"
 
-node_js: 0.10
+env:
+  global:
+    - SAUCE_USERNAME=gregorypratt
+    - SAUCE_ACCESS_KEY=d923613e-2797-4046-b0db-efdf3e9a205b
+    - LOGS_DIR=/tmp/protractor-build/logs
+    - BROWSER_PROVIDER_READY_FILE=/tmp/sauce-connect-ready
 
-before_install: npm install -g grunt-cli
+before_install:
+  - npm install -g grunt-cli
 
-install: npm install
+install:
+  - npm install
+
+before_script:
+  - mkdir -p $LOGS_DIR
+  - ./scripts/sauce_connect_setup.sh
+  - ./scripts/wait_for_browser_provider.sh
+
+script:
+  - ./scripts/testserver.sh
+  - ./scripts/testonsauce.sh

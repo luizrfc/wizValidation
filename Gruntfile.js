@@ -53,10 +53,19 @@ module.exports = function (grunt) {
 					// Arguments passed to the command
 				}
 			},
-			home_feature: {
+			local: {
 				options: {
-					configFile: "demo/app/features/home/home.spec.conf.js", // Target-specific config file
+					configFile: "protractor.spec.conf.js", // Target-specific config file
 					args: {} // Target-specific arguments
+				}
+			},
+			saucelabs: {
+				options: {
+					configFile: "saucelabs.spec.conf.js", // Target-specific config file
+					args: {
+						sauceUser: process.env.SAUCE_USERNAME,
+						sauceKey: process.env.SAUCE_ACCESS_KEY
+					}
 				}
 			}
 		}
@@ -67,6 +76,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-protractor-webdriver');
 	grunt.loadNpmTasks('grunt-protractor-runner');
 
-	grunt.registerTask('test', ['protractor_webdriver:start', 'protractor']);
+	grunt.registerTask('test:local', ['protractor_webdriver:start', 'protractor:local']);
+	grunt.registerTask('test:saucelabs', ['protractor:saucelabs']);
 	grunt.registerTask('default', ['concat', 'uglify']);
 };

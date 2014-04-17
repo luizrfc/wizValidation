@@ -426,7 +426,7 @@ angular.module('wiz.validation.file')
 			require: 'ngModel',
 			scope: {
 				// array of valid file types e.g ['image/jpeg','image/gif']
-				fileType: '=wizValFileTypes'
+				fileTypes: '=wizValFileTypes'
 			},
 			link: function (scope, elem, attrs, ngModel) {
 
@@ -438,10 +438,9 @@ angular.module('wiz.validation.file')
 					var valid = true;
 
 					// if file type attribute exists check it.
-					if (scope.fileType) {
+					if (scope.fileTypes) {
 						for (var i = 0; i < files.length; i++) {
-
-							if (scope.fileType.indexOf(files[i].type) === -1) {
+							if (scope.fileTypes.indexOf(files[i].type) === -1) {
 								valid = false;
 							}
 						}
@@ -585,7 +584,7 @@ angular.module('wiz.validation.requireOther')
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			scope: { elementsToCheck: '=wizValRequireOther' },
+			scope: { elementsToCheck: '=wizValRequireOther', model: '=ngModel' },
 			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
@@ -598,23 +597,32 @@ angular.module('wiz.validation.requireOther')
 					return validate(value);
 				});
 
+				if (typeof scope.elementsToCheck !== "undefined") {
+					scope.$watch('elementsToCheck',
+						function (n, o) {
+							console.log(n, o);
+							validate(ngModel.$viewValue);
+						}, true);
+				}
+
 				function validate(value) {
 					if (typeof value === "undefined") value = "";
 					var valid = true;
 					if (typeof scope.elementsToCheck !== "undefined") {
-						for (var i = scope.elementsToCheck.length - 1; i >= 0; i--) {
-							if (!scope.elementsToCheck[i].$valid || value == "") {
+						for (var i = 0; i <= scope.elementsToCheck.length - 1; i++) {
+							if (scope.elementsToCheck[i] == false || value == "") {
 								valid = false;
 								break;
 							}
 						}
+						ngModel.$setValidity('wizValRequireOther', valid);
+						return value;
 					}
-					ngModel.$setValidity('wizValRequireOther', valid);
-					return value;
 				}
 			}
-		};
+		}
 	});
+
 angular.module('wiz.validation.startsWith')
 
 	.directive('wizValStartsWith', function () {
