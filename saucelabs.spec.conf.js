@@ -1,10 +1,12 @@
 exports.config = {
-	sauceUser: "gregorypratt",
-	sauceKey: "d923613e-2797-4046-b0db-efdf3e9a205b",
+	sauceUser: process.env.SAUCE_USERNAME,
+	sauceKey: process.env.SAUCE_ACCESS_KEY,
 
 	// Capabilities to be passed to the web-driver instance.
 	capabilities: {
-		'browserName': 'chrome'
+		'browserName': 'chrome',
+		'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+		'build': process.env.TRAVIS_BUILD_NUMBER
 	},
 
 	// Spec patterns are relative to the current working directly when
