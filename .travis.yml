@@ -9,7 +9,7 @@ addons:
 env:
   global:
     - SAUCE_USERNAME=gregorypratt
-    - SAUCE_ACCESS_KEY=d923613e-2797-4046-b0db-efdf3e9a205
+    - SAUCE_ACCESS_KEY=d923613e-2797-4046-b0db-efdf3e9a205b
 
 before_install:
   - npm install -g grunt-cli
