@@ -11,5 +11,8 @@
 		"grunt-protractor-runner": "^0.2.4",
 		"protractor": "^0.21.0",
 		"grunt-protractor-webdriver": "^0.1.6"
+	},
+	scripts: {
+		test: "grunt test"
 	}
 }
