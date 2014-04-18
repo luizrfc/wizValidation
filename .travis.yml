@@ -1,10 +1,6 @@
 language: node_js
-
 node_js:
   - "0.10"
-
-addons:
-  sauce_connect: true
 
 env:
   global:
@@ -18,9 +14,9 @@ before_install:
 
 before_script:
   - mkdir -p $LOGS_DIR
-  - ./node_modules/protractor/scripts/sauce_connect_setup.sh
-  - ./node_modules/protractor/scripts/wait_for_browser_provider.sh
+  - ./scripts/sauce_connect_setup.sh
+  - ./scripts/wait_for_browser_provider.sh
 
 script:
-  - ./node_modules/protractor/scripts/testserver.sh
-  - ./node_modules/protractor/scripts/testonsauce.sh
+  - ./scripts/testserver.sh
+  - ./scripts/testonsauce.sh
