@@ -7,9 +7,9 @@ module.exports = function (grunt) {
 		concat: {
 			js: {
 				src: ['wizValidation/src/*.mod.js',
-							'wizValidation/src/**/*.mod.js',
-							'wizValidation/src/**/*.svc.js',
-							'wizValidation/src/**/*.dir.js'],
+					'wizValidation/src/**/*.mod.js',
+					'wizValidation/src/**/*.svc.js',
+					'wizValidation/src/**/*.dir.js'],
 				dest: 'wizValidation/wizValidation.js'
 			}
 		},
@@ -34,10 +34,17 @@ module.exports = function (grunt) {
 		 * Start a new server
 		 */
 		connect: {
-			server: {
+			options: {
+				hostname: 'localhost',
+				port: 9001
+			},
+			test: {
+
+			},
+			open: {
 				options: {
-					hostname: 'localhost',
-					port: 9001
+					open: true,
+					keepalive: true
 				}
 			}
 		},
@@ -45,12 +52,8 @@ module.exports = function (grunt) {
 		 * Start a new Selenium Web Driver instance
 		 */
 		protractor_webdriver: {
-			options: {
-				// Task-specific options go here.
-			},
-			start: {
-				// Target-specific file lists and/or options go here.
-			}
+			options: {},
+			start: {}
 		},
 		/*
 		 * Run the tests
@@ -83,7 +86,13 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-protractor-webdriver');
 	grunt.loadNpmTasks('grunt-protractor-runner');
 
-	grunt.registerTask('test:local', ['connect', 'protractor_webdriver:start', 'protractor:local']);
-	grunt.registerTask('test:saucelabs', ['connect', 'protractor:saucelabs']);
-	grunt.registerTask('default', ['concat', 'uglify']);
+	// Local testing
+	grunt.registerTask('test', ['connect:test', 'protractor_webdriver', 'protractor:local']);
+
+	// Travis CI testings
+	grunt.registerTask('travis', ['connect:test', 'protractor:saucelabs']);
+
+	// Build and run site to develop against
+	// TODO: Copy files to destination then watch and live reload
+	grunt.registerTask('default', ['concat', 'uglify', 'connect:open']);
 };

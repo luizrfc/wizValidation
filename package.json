@@ -15,6 +15,6 @@
 		"grunt-contrib-connect": "~0.7.1"
 	},
 	"scripts": {
-		"test": "grunt test:saucelabs"
+		"test": "grunt travis"
 	}
 }
