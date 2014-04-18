@@ -14,9 +14,9 @@ before_install:
 
 before_script:
   - mkdir -p $LOGS_DIR
-  - ./scripts/sauce_connect_setup.sh
-  - ./scripts/wait_for_browser_provider.sh
+  - ./node_modules/protractor/scripts/sauce_connect_setup.sh
+  - ./node_modules/protractor/scripts/wait_for_browser_provider.sh
 
 script:
-  - ./scripts/testserver.sh
-  - ./scripts/testonsauce.sh
+  - ./node_modules/protractor/scripts/testserver.sh
+  - ./node_modules/protractor/scripts/testonsauce.sh
