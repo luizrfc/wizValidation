@@ -84,6 +84,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-protractor-runner');
 
 	grunt.registerTask('test:local', ['connect', 'protractor_webdriver:start', 'protractor:local']);
-	grunt.registerTask('test:saucelabs', ['connect', 'protractor_webdriver:start', 'protractor:saucelabs']);
+	grunt.registerTask('test:saucelabs', ['connect', 'protractor:saucelabs']);
 	grunt.registerTask('default', ['concat', 'uglify']);
 };
