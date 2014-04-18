@@ -20,5 +20,5 @@ exports.config = {
 		defaultTimeoutInterval: 30000
 	},
 
-	baseUrl: 'http://localhost:' + (process.env.HTTP_PORT || '8000')
+	baseUrl: 'http://localhost:9001/'
 };

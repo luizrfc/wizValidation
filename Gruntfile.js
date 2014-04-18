@@ -31,6 +31,17 @@ module.exports = function (grunt) {
 			tasks: ['concat', 'uglify']
 		},
 		/*
+		 * Start a new server
+		 */
+		connect: {
+			server: {
+				options: {
+					hostname: 'localhost',
+					port: 9001
+				}
+			}
+		},
+		/*
 		 * Start a new Selenium Web Driver instance
 		 */
 		protractor_webdriver: {
@@ -68,10 +79,11 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-protractor-webdriver');
 	grunt.loadNpmTasks('grunt-protractor-runner');
 
-	grunt.registerTask('test:local', ['protractor_webdriver:start', 'protractor:local']);
-	grunt.registerTask('test:saucelabs', ['protractor:saucelabs']);
+	grunt.registerTask('test:local', ['connect', 'protractor_webdriver:start', 'protractor:local']);
+	grunt.registerTask('test:saucelabs', ['connect', 'protractor_webdriver:start', 'protractor:saucelabs']);
 	grunt.registerTask('default', ['concat', 'uglify']);
 };

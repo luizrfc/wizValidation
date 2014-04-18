@@ -17,5 +17,5 @@ exports.config = {
 		defaultTimeoutInterval: 30000
 	},
 
-	baseUrl: 'http://localhost:63342/ngValidation/' // Change this to whatever server you're running on locally
+	baseUrl: 'http://localhost:9001/' // Change this to whatever server you're running on locally
 };
