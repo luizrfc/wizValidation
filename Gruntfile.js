@@ -47,11 +47,11 @@ module.exports = function (grunt) {
 		protractor: {
 			options: {
 				keepAlive: false, // If false, the grunt process stops when the test fails.
-				noColor: false, // If true, protractor will not use colors in its output.
+				noColor: false // If true, protractor will not use colors in its output.
 			},
 			local: {
 				options: {
-					configFile: "protractor.spec.conf.js", // Target-specific config file
+					configFile: "protractor.spec.conf.js" // Target-specific config file
 				}
 			},
 			saucelabs: {
@@ -72,6 +72,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-protractor-runner');
 
 	grunt.registerTask('test:local', ['protractor_webdriver:start', 'protractor:local']);
-	grunt.registerTask('test:saucelabs', ['protractor_webdriver:start', 'protractor:saucelabs']);
+	grunt.registerTask('test:saucelabs', ['protractor:saucelabs']);
 	grunt.registerTask('default', ['concat', 'uglify']);
 };
