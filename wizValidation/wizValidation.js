@@ -584,7 +584,9 @@ angular.module('wiz.validation.requireOther')
 		return {
 			restrict: 'A',
 			require: 'ngModel',
-			scope: { elementsToCheck: '=wizValRequireOther', model: '=ngModel' },
+			scope: {
+				elementsToCheck: '=wizValRequireOther'
+			},
 			link: function (scope, elem, attrs, ngModel) {
 
 				//For DOM -> model validation
@@ -600,7 +602,6 @@ angular.module('wiz.validation.requireOther')
 				if (typeof scope.elementsToCheck !== "undefined") {
 					scope.$watch('elementsToCheck',
 						function (n, o) {
-							console.log(n, o);
 							validate(ngModel.$viewValue);
 						}, true);
 				}
@@ -609,15 +610,15 @@ angular.module('wiz.validation.requireOther')
 					if (typeof value === "undefined") value = "";
 					var valid = true;
 					if (typeof scope.elementsToCheck !== "undefined") {
-						for (var i = 0; i <= scope.elementsToCheck.length - 1; i++) {
-							if (scope.elementsToCheck[i] == false || value == "") {
+						for (var i = 0; i < scope.elementsToCheck.length; i++) {
+							if (scope.elementsToCheck[i] === false || value === "") {
 								valid = false;
 								break;
 							}
 						}
-						ngModel.$setValidity('wizValRequireOther', valid);
-						return value;
 					}
+					ngModel.$setValidity('wizValRequireOther', valid);
+					return value;
 				}
 			}
 		}
