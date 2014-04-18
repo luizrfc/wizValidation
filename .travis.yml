@@ -12,6 +12,3 @@ addons:
 
 before_install:
   - npm install -g grunt-cli
-
-install:
-  - webdriver-manager update
