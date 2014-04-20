@@ -24,11 +24,31 @@ module.exports = function (grunt) {
 			}
 		},
 		/*
+		 * Copy files into website
+		 */
+		copy: {
+			main: {
+				files: [
+					{
+						expand: true,
+						src: ['wizValidation/wizValidation*.js'],
+						dest: 'demo/app/libs/',
+						filter: 'isFile'
+					}
+				]
+			}
+		},
+		/*
 		 * Watch for changes. If any concatinate and minify
 		 */
 		watch: {
-			files: ['<%= concat.js.src %>'],
-			tasks: ['concat', 'uglify']
+			dev: {
+				options: {
+					livereload: true
+				},
+				files: ['demo/index.html', '<%= concat.js.src %>'],
+				tasks: ['build']
+			}
 		},
 		/*
 		 * Start a new server
@@ -44,7 +64,7 @@ module.exports = function (grunt) {
 			open: {
 				options: {
 					open: true,
-					keepalive: true
+					livereload: true
 				}
 			}
 		},
@@ -81,18 +101,14 @@ module.exports = function (grunt) {
 	});
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-protractor-webdriver');
 	grunt.loadNpmTasks('grunt-protractor-runner');
 
-	// Local testing
-	grunt.registerTask('test', ['connect:test', 'protractor_webdriver', 'protractor:local']);
-
-	// Travis CI testings
-	grunt.registerTask('travis', ['connect:test', 'protractor:saucelabs']);
-
-	// Build and run site to develop against
-	// TODO: Copy files to destination then watch and live reload
-	grunt.registerTask('default', ['concat', 'uglify', 'connect:open']);
+	grunt.registerTask('build', 'Build site', ['concat', 'uglify', 'copy']);
+	grunt.registerTask('test', 'Local testing', ['build', 'connect:test', 'protractor_webdriver', 'protractor:local']);
+	grunt.registerTask('travis', 'Start site and run tests on SauceLabs', ['connect:test', 'protractor:saucelabs']);
+	grunt.registerTask('default', 'Build and run site', ['build', 'connect:open', 'watch']);
 };

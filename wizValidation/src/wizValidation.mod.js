@@ -15,4 +15,3 @@
 	'wiz.validation.blacklist',
 	'wiz.validation.whitelist',
 	'wiz.validation.requireOther']);
-

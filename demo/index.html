@@ -43,7 +43,7 @@
 					 ng-class="{invalid: demoForm.decimal.$error.wizValDecimal}"/>
 	</label>
 	<label>
-		Decimal 3 places:
+		Decimal (3 places):
 		<input type="number" step=".5" name="decimalPlaces" ng-model="demo.decimalPlaces" wiz-val-decimal="3"
 					 ng-class="{invalid: demoForm.decimalPlaces.$error.wizValDecimal}"/>
 	</label>
@@ -53,7 +53,7 @@
 					 ng-class="{invalid: demoForm.postcode.$error.wizValPostcode}"/>
 	</label>
 	<label>
-		Zipcode:
+		Zip code:
 		<input type="text" name="zipcode" ng-model="demo.zipcode" wiz-val-zipcode
 					 ng-class="{invalid: demoForm.zipcode.$error.wizValZipcode}"/>
 	</label>
@@ -174,32 +174,35 @@
 					 ng-class="{invalid: demoForm.blacklist.$error.wizValBlacklist}"/>
 	</label>
 	<label>
-		Whitelist: "red", "orange", "yellow"
+		White list: "red", "orange", "yellow"
 		<input type="text" name="whitelist" ng-model="demo.whitelist" wiz-val-whitelist="['red', 'orange', 'yellow']"
 					 ng-class="{invalid: demoForm.whitelist.$error.wizValWhitelist}"/>
 	</label>
-    <label>
-        file:
-        <input type="file"
-               name="file"
-               ng-model="demo.file"
-               wiz-val-file
-               wiz-val-file-types="['image/jpeg','image/jpeg']"
-               ng-class="{invalid: demoForm.file.$error.wizValFile}" />
-    </label>
-    <label>
-        file (multiple):
-        <input type="file"
-               name="fileMultiple"
-               multiple
-               ng-model="demo.fileMultiple"
-               wiz-val-file
-               wiz-val-file-types="['image/jpeg','image/gif']"
-               ng-class="{invalid: demoForm.file.$error.wizValFile}" />
-    </label>
 	<label>
-		Require Other: 
-		<input type="text" name="requireOther" ng-model="demo.requireother" wiz-val-require-other="[demoForm.integer.$valid, demoForm.decimal.$valid]" 
+		File:
+		<input type="file"
+					 name="file"
+					 ng-model="demo.file"
+					 wiz-val-file
+					 wiz-val-file-types="['image/jpeg','image/gif']"
+					 ng-class="{invalid: demoForm.file.$error.wizValFile}"/>
+	</label>
+	<label>
+		File (multiple):
+		<input type="file"
+					 name="fileMultiple"
+					 multiple
+					 ng-model="demo.fileMultiple"
+					 wiz-val-file
+					 wiz-val-file-types="['image/jpeg','image/gif']"
+					 ng-class="{invalid: demoForm.file.$error.wizValFile}"/>
+	</label>
+	<label>
+		Require Other (e.g. Integer and Decimal):
+		<input type="text"
+					 name="requireOther"
+					 ng-model="demo.requireother"
+					 wiz-val-require-other="[demoForm.integer.$valid, demoForm.decimal.$valid]"
 					 ng-class="{invalid: demoForm.requireOther.$error.wizValRequireOther}"/>
 	</label>
 </form>

@@ -16,7 +16,6 @@ angular.module('wiz.validation', [
 	'wiz.validation.whitelist',
 	'wiz.validation.requireOther']);
 
-
 angular.module('wiz.validation.atLeastOne', []);
 angular.module('wiz.validation.blacklist', []);
 angular.module('wiz.validation.dateOfBirth', []);
@@ -601,14 +600,14 @@ angular.module('wiz.validation.requireOther')
 
 				if (typeof scope.elementsToCheck !== "undefined") {
 					scope.$watch('elementsToCheck',
-						function (n, o) {
+						function () {
 							validate(ngModel.$viewValue);
 						}, true);
 				}
 
 				function validate(value) {
-					if (typeof value === "undefined") value = "";
 					var valid = true;
+					if (typeof value === "undefined") value = "";
 					if (typeof scope.elementsToCheck !== "undefined") {
 						for (var i = 0; i < scope.elementsToCheck.length; i++) {
 							if (scope.elementsToCheck[i] === false || value === "") {
