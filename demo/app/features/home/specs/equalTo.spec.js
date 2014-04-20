@@ -9,9 +9,9 @@ describe('Equal to validation', function () {
 		elem1.sendKeys('something');
 		elem2.sendKeys('something');
 		elem3.sendKeys('something');
-		expect(elem1.getAttribute('class')).not.toMatch('invalid');
-		expect(elem2.getAttribute('class')).not.toMatch('invalid');
-		expect(elem3.getAttribute('class')).not.toMatch('invalid');
+		expect(elem1.getAttribute('class')).not.toMatch('ng-invalid');
+		expect(elem2.getAttribute('class')).not.toMatch('ng-invalid');
+		expect(elem3.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 
 	it('should set invalid when one of the fields are different', function () {
@@ -22,44 +22,44 @@ describe('Equal to validation', function () {
 		var elem3 = element(by.model('demo.equalTo3'));
 
 		elem1.sendKeys('something');
-		expect(elem1.getAttribute('class')).toMatch('invalid');
-		expect(elem2.getAttribute('class')).toMatch('invalid');
-		expect(elem3.getAttribute('class')).toMatch('invalid');
+		expect(elem1.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem2.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem3.getAttribute('class')).toMatch('ng-invalid');
 		elem1.clear();
 
 		elem2.sendKeys('something');
-		expect(elem1.getAttribute('class')).toMatch('invalid');
-		expect(elem2.getAttribute('class')).toMatch('invalid');
-		expect(elem3.getAttribute('class')).toMatch('invalid');
+		expect(elem1.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem2.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem3.getAttribute('class')).toMatch('ng-invalid');
 		elem2.clear();
 
 		elem3.sendKeys('something');
-		expect(elem1.getAttribute('class')).toMatch('invalid');
-		expect(elem2.getAttribute('class')).toMatch('invalid');
-		expect(elem3.getAttribute('class')).toMatch('invalid');
+		expect(elem1.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem2.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem3.getAttribute('class')).toMatch('ng-invalid');
 		elem3.clear();
 
 		elem1.sendKeys('something');
 		elem2.sendKeys('something');
-		expect(elem1.getAttribute('class')).toMatch('invalid');
-		expect(elem2.getAttribute('class')).toMatch('invalid');
-		expect(elem3.getAttribute('class')).toMatch('invalid');
+		expect(elem1.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem2.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem3.getAttribute('class')).toMatch('ng-invalid');
 		elem1.clear();
 		elem2.clear();
 
 		elem1.sendKeys('something');
 		elem3.sendKeys('something');
-		expect(elem1.getAttribute('class')).toMatch('invalid');
-		expect(elem2.getAttribute('class')).toMatch('invalid');
-		expect(elem3.getAttribute('class')).toMatch('invalid');
+		expect(elem1.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem2.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem3.getAttribute('class')).toMatch('ng-invalid');
 		elem1.clear();
 		elem3.clear();
 
 		elem2.sendKeys('something');
 		elem3.sendKeys('something');
-		expect(elem1.getAttribute('class')).toMatch('invalid');
-		expect(elem2.getAttribute('class')).toMatch('invalid');
-		expect(elem3.getAttribute('class')).toMatch('invalid');
+		expect(elem1.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem2.getAttribute('class')).toMatch('ng-invalid');
+		expect(elem3.getAttribute('class')).toMatch('ng-invalid');
 		elem2.clear();
 		elem3.clear();
 	});

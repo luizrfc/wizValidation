@@ -6,7 +6,7 @@ describe('Integer validation', function () {
 
 		elem.clear();
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 	it('should allow whole numbers', function () {
 		browser.get('demo/index.html');
@@ -15,7 +15,7 @@ describe('Integer validation', function () {
 
 		elem.sendKeys('1234567890');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 	it('should set invalid when not whole numbers', function () {
 		browser.get('demo/index.html');
@@ -24,6 +24,6 @@ describe('Integer validation', function () {
 
 		elem.sendKeys('0.5');
 
-		expect(elem.getAttribute('class')).toMatch('invalid');
+		expect(elem.getAttribute('class')).toMatch('ng-invalid');
 	});
 });

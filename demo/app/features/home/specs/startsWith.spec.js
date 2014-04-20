@@ -6,7 +6,7 @@ describe('Starts with validation', function () {
 
 		elem.sendKeys('begin');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 	it('should set invalid when does not start with "begin"', function () {
 		browser.get('demo/index.html');
@@ -15,6 +15,6 @@ describe('Starts with validation', function () {
 
 		elem.sendKeys('abegin');
 
-		expect(elem.getAttribute('class')).toMatch('invalid');
+		expect(elem.getAttribute('class')).toMatch('ng-invalid');
 	});
 });

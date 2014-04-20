@@ -8,8 +8,8 @@ describe('Decimal validation', function () {
 		elem.clear();
 		elemPlaces.clear();
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
-		expect(elemPlaces.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
+		expect(elemPlaces.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 
 	it('should allow decimal numbers', function () {
@@ -21,8 +21,8 @@ describe('Decimal validation', function () {
 		elem.sendKeys('0.5');
 		elemPlaces.sendKeys('0.5');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
-		expect(elemPlaces.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
+		expect(elemPlaces.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 
 	it('should allow decimal numbers up to specified places', function () {
@@ -33,7 +33,7 @@ describe('Decimal validation', function () {
 		// Specified 3 places
 		elem.sendKeys('0.123');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 
 	it('should set invalid when not decimal numbers', function () {
@@ -45,8 +45,8 @@ describe('Decimal validation', function () {
 		elem.sendKeys('0');
 		elemPlaces.sendKeys('0');
 
-		expect(elem.getAttribute('class')).toMatch('invalid');
-		expect(elemPlaces.getAttribute('class')).toMatch('invalid');
+		expect(elem.getAttribute('class')).toMatch('ng-invalid');
+		expect(elemPlaces.getAttribute('class')).toMatch('ng-invalid');
 	});
 
 
@@ -58,6 +58,6 @@ describe('Decimal validation', function () {
 		// Specified 3 places
 		elem.sendKeys('0.1234');
 
-		expect(elem.getAttribute('class')).toMatch('invalid');
+		expect(elem.getAttribute('class')).toMatch('ng-invalid');
 	});
 });

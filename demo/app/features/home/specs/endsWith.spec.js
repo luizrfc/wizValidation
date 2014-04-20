@@ -6,7 +6,7 @@ describe('Ends with validation', function () {
 
 		elem.sendKeys('finish');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 	it('should set invalid when does not end with "begin"', function () {
 		browser.get('demo/index.html');
@@ -15,6 +15,6 @@ describe('Ends with validation', function () {
 
 		elem.sendKeys('finisha');
 
-		expect(elem.getAttribute('class')).toMatch('invalid');
+		expect(elem.getAttribute('class')).toMatch('ng-invalid');
 	});
 });

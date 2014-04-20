@@ -6,7 +6,7 @@ describe('Postcode validation', function () {
 
 		elem.clear();
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 	it('should allow standard UK postcode formats', function () {
 		browser.get('demo/index.html');
@@ -15,32 +15,32 @@ describe('Postcode validation', function () {
 
 		elem.sendKeys('AA9A 9AA');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 		elem.clear();
 
 		elem.sendKeys('A9A 9AA');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 		elem.clear();
 
 		elem.sendKeys('A9 9AA');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 		elem.clear();
 
 		elem.sendKeys('A99 9AA');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 		elem.clear();
 
 		elem.sendKeys('AA9 9AA');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 		elem.clear();
 
 		elem.sendKeys('AA99 9AA');
 
-		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 		elem.clear();
 	});
 
@@ -51,6 +51,6 @@ describe('Postcode validation', function () {
 
 		elem.sendKeys('0');
 
-		expect(elem.getAttribute('class')).toMatch('invalid');
+		expect(elem.getAttribute('class')).toMatch('ng-invalid');
 	});
 });
