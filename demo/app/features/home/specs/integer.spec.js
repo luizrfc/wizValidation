@@ -1,4 +1,13 @@
 describe('Integer validation', function () {
+	it('should allow empty field', function () {
+		browser.get('demo/index.html');
+
+		var elem = element(by.model('demo.integer'));
+
+		elem.clear();
+
+		expect(elem.getAttribute('class')).not.toMatch('invalid');
+	});
 	it('should allow whole numbers', function () {
 		browser.get('demo/index.html');
 

@@ -17,7 +17,9 @@
 				});
 
 				function validate(value) {
-					var valid = /^-?[0-9]+$/.test(value);
+					var valid = true;
+					if (angular.isDefined(value) && value.length > 0)
+						valid = /^-?[0-9]+$/.test(value);
 					ngModel.$setValidity('wizValInteger', valid);
 					return value;
 				}

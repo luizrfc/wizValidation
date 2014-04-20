@@ -110,5 +110,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', 'Build site', ['concat', 'uglify', 'copy']);
 	grunt.registerTask('test', 'Local testing', ['build', 'connect:test', 'protractor_webdriver', 'protractor:local']);
 	grunt.registerTask('travis', 'Start site and run tests on SauceLabs', ['connect:test', 'protractor:saucelabs']);
-	grunt.registerTask('default', 'Build and run site', ['build', 'connect:open', 'watch']);
+	grunt.registerTask('run', 'Build and run site', ['build', 'connect:open', 'watch']);
+	grunt.registerTask('default', 'Build and run site', ['run']);
 };

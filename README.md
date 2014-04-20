@@ -21,7 +21,6 @@ There are currently 14 validators available with more in the works:
 - decimal
 - starts with
 - ends with
-- phone (currently UK only)
 - postcode
 - zip code
 - at least one

@@ -4,7 +4,6 @@
 	'wiz.validation.dateOfBirth',
 	'wiz.validation.postcode',
 	'wiz.validation.zipcode',
-	'wiz.validation.phone',
 	'wiz.validation.atLeastOne',
 	'wiz.validation.equalTo',
 	'wiz.validation.notEqualTo',

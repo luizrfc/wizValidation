@@ -5,6 +5,14 @@ describe('Date of birth validation', function () {
 	var month = today.getMonth();
 	var year = today.getFullYear() - 18;
 
+	it('should allow empty field', function () {
+		browser.get('demo/index.html');
+
+		var elem = element(by.model('demo.dateOfBirth'));
+
+		expect(elem.getAttribute('class')).not.toMatch('invalid');
+	});
+
 	it('should allow birth dates of people 18', function () {
 		browser.get('demo/index.html');
 

@@ -1,4 +1,17 @@
 describe('Decimal validation', function () {
+	it('should allow emtpy field', function () {
+		browser.get('demo/index.html');
+
+		var elem = element(by.model('demo.decimal'));
+		var elemPlaces = element(by.model('demo.decimalPlaces'));
+
+		elem.clear();
+		elemPlaces.clear();
+
+		expect(elem.getAttribute('class')).not.toMatch('invalid');
+		expect(elemPlaces.getAttribute('class')).not.toMatch('invalid');
+	});
+
 	it('should allow decimal numbers', function () {
 		browser.get('demo/index.html');
 

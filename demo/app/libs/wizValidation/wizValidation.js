@@ -4,7 +4,6 @@ angular.module('wiz.validation', [
 	'wiz.validation.dateOfBirth',
 	'wiz.validation.postcode',
 	'wiz.validation.zipcode',
-	'wiz.validation.phone',
 	'wiz.validation.atLeastOne',
 	'wiz.validation.equalTo',
 	'wiz.validation.notEqualTo',
@@ -27,7 +26,6 @@ angular.module('wiz.validation.equalTo', []);
 angular.module('wiz.validation.file', []);
 angular.module('wiz.validation.integer', []);
 angular.module('wiz.validation.notEqualTo', []);
-angular.module('wiz.validation.phone', []);
 angular.module('wiz.validation.postcode', []);
 angular.module('wiz.validation.requireOther', []);
 angular.module('wiz.validation.startsWith', []);
@@ -280,18 +278,20 @@ angular.module('wiz.validation.dateOfBirth')
 				});
 
 				function validate(value) {
-					var valid = false;
-					if (value && /^\d+$/.test(scope.wizValDateOfBirth)) {
-						// If positive integer used for age then use to check input value
-						var today = new Date();
-						var birthDate = new Date(value);
-						var age = today.getFullYear() - birthDate.getFullYear();
-						var m = today.getMonth() - birthDate.getMonth();
-						if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-							age--;
-						}
-						if (age >= scope.wizValDateOfBirth) {
-							valid = true;
+					var valid = true;
+					if (angular.isDefined(value) && value.length > 0) {
+						if (value && /^\d+$/.test(scope.wizValDateOfBirth)) {
+							// If positive integer used for age then use to check input value
+							var today = new Date();
+							var birthDate = new Date(value);
+							var age = today.getFullYear() - birthDate.getFullYear();
+							var m = today.getMonth() - birthDate.getMonth();
+							if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+								age--;
+							}
+							if (age < scope.wizValDateOfBirth) {
+								valid = false;
+							}
 						}
 					}
 
@@ -324,12 +324,15 @@ angular.module('wiz.validation.decimal')
 				});
 
 				function validate(value) {
-					var pattern = "^-?([0-9]+)\\.([0-9]+)$";
-					if (/^-?[0-9]+$/.test(scope.decimalPlaces)) {
-						pattern = "^-?([0-9]+)\\.([0-9]{1," + scope.decimalPlaces + "})$";
+					var valid = true;
+					if (angular.isDefined(value) && value.length > 0) {
+						var pattern = "^-?([0-9]+)\\.([0-9]+)$";
+						if (/^-?[0-9]+$/.test(scope.decimalPlaces)) {
+							pattern = "^-?([0-9]+)\\.([0-9]{1," + scope.decimalPlaces + "})$";
+						}
+						var regEx = new RegExp(pattern);
+						valid = regEx.test(value);
 					}
-					var regEx = new RegExp(pattern);
-					var valid = regEx.test(value);
 					ngModel.$setValidity('wizValDecimal', valid);
 					return value;
 				}
@@ -468,7 +471,9 @@ angular.module('wiz.validation.integer')
 				});
 
 				function validate(value) {
-					var valid = /^-?[0-9]+$/.test(value);
+					var valid = true;
+					if (angular.isDefined(value) && value.length > 0)
+						valid = /^-?[0-9]+$/.test(value);
 					ngModel.$setValidity('wizValInteger', valid);
 					return value;
 				}
@@ -522,33 +527,6 @@ angular.module('wiz.validation.notEqualTo')
 		};
 	}]);
 
-angular.module('wiz.validation.phone')
-
-	.directive('wizValPhone', function () {
-		return {
-			restrict: 'A',
-			require: 'ngModel',
-			link: function (scope, elem, attrs, ngModel) {
-
-				//For DOM -> model validation
-				ngModel.$parsers.unshift(function (value) {
-					return validate(value);
-				});
-
-				//For model -> DOM validation
-				ngModel.$formatters.unshift(function (value) {
-					return validate(value);
-				});
-
-				function validate(value) {
-					var valid = /(^(((\+|00)44)?)([1-9]{1}[0-9]{9})$)|(^[0][0-9]{10}$)/.test(value);
-					ngModel.$setValidity('wizValPhone', valid);
-					return value;
-				}
-			}
-		};
-	});
-
 angular.module('wiz.validation.postcode')
 
 	.directive('wizValPostcode', function () {
@@ -568,8 +546,11 @@ angular.module('wiz.validation.postcode')
 				});
 
 				function validate(value) {
-					// GOV Postcode regex: http://webarchive.nationalarchives.gov.uk/+/http://www.cabinetoffice.gov.uk/media/291370/bs7666-v2-0-xsd-PostCodeType.htm
-					var valid = /^\b(GIR ?0AA|SAN ?TA1|(?:[A-PR-UWYZ](?:\d{0,2}|[A-HK-Y]\d|[A-HK-Y]\d\d|\d[A-HJKSTUW]|[A-HK-Y]\d[ABEHMNPRV-Y])) ?\d[ABD-HJLNP-UW-Z]{2})\b$/i.test(value);
+					var valid = true;
+					if (angular.isDefined(value) && value.length > 0) {
+						// GOV Postcode regex: http://webarchive.nationalarchives.gov.uk/+/http://www.cabinetoffice.gov.uk/media/291370/bs7666-v2-0-xsd-PostCodeType.htm
+						valid = /^\b(GIR ?0AA|SAN ?TA1|(?:[A-PR-UWYZ](?:\d{0,2}|[A-HK-Y]\d|[A-HK-Y]\d\d|\d[A-HJKSTUW]|[A-HK-Y]\d[ABEHMNPRV-Y])) ?\d[ABD-HJLNP-UW-Z]{2})\b$/i.test(value);
+					}
 					ngModel.$setValidity('wizValPostcode', valid);
 					return value;
 				}
@@ -756,7 +737,10 @@ angular.module('wiz.validation.zipcode')
 				});
 
 				function validate(value) {
-					var valid = /(^\d{5}-?\d{4}$)|(^\d{5}$)/.test(value);
+					var valid = true;
+					if (angular.isDefined(value) && value.length > 0)
+						valid = /(^\d{5}-?\d{4}$)|(^\d{5}$)/.test(value);
+
 					ngModel.$setValidity('wizValZipcode', valid);
 					return value;
 				}

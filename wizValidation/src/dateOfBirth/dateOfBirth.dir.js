@@ -20,18 +20,20 @@
 				});
 
 				function validate(value) {
-					var valid = false;
-					if (value && /^\d+$/.test(scope.wizValDateOfBirth)) {
-						// If positive integer used for age then use to check input value
-						var today = new Date();
-						var birthDate = new Date(value);
-						var age = today.getFullYear() - birthDate.getFullYear();
-						var m = today.getMonth() - birthDate.getMonth();
-						if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-							age--;
-						}
-						if (age >= scope.wizValDateOfBirth) {
-							valid = true;
+					var valid = true;
+					if (angular.isDefined(value) && value.length > 0) {
+						if (value && /^\d+$/.test(scope.wizValDateOfBirth)) {
+							// If positive integer used for age then use to check input value
+							var today = new Date();
+							var birthDate = new Date(value);
+							var age = today.getFullYear() - birthDate.getFullYear();
+							var m = today.getMonth() - birthDate.getMonth();
+							if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+								age--;
+							}
+							if (age < scope.wizValDateOfBirth) {
+								valid = false;
+							}
 						}
 					}
 

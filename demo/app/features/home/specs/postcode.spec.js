@@ -1,4 +1,13 @@
 describe('Postcode validation', function () {
+	it('should allow empty field', function () {
+		browser.get('demo/index.html');
+
+		var elem = element(by.model('demo.postcode'));
+
+		elem.clear();
+
+		expect(elem.getAttribute('class')).not.toMatch('invalid');
+	});
 	it('should allow standard UK postcode formats', function () {
 		browser.get('demo/index.html');
 
