@@ -48,6 +48,8 @@ To use the validators simply add `wiz-val-[validator-name]` as an attribute to H
            wiz-val-decimal
            ng-class="{invalid: demoForm.decimal.$error.wizValDecimal}" />
 
+The validators don't check required logic, that is done by standard HTML validation.
+
 ###At least one and Equal to
 Both of these validators have an extra option. Add the directive `wiz-val-at-least-one` or `wiz-val-equal-to` to each input you want to validate as a group. E.g.
 
