@@ -145,36 +145,36 @@
 		<label>
 			File (types jpeg, gif | size 200 bytes):
 			<input type="file"
-						 name="file"
-						 ng-model="demo.file"
-						 wiz-val-file
-						 wiz-val-file-types="['image/jpeg','image/gif']"
-						 wiz-val-file-size="1000000" />
+                               name="file"
+                               ng-model="demo.file"
+                               wiz-val-file
+                               wiz-val-file-types="['image/jpeg','image/gif']"
+                               wiz-val-file-size="1000000" />
 		</label>
 		<label>
 			File (multiple):
 			<input type="file"
-						 name="fileMultiple"
-						 multiple
-						 ng-model="demo.fileMultiple"
-						 wiz-val-file
-						 wiz-val-file-types="['image/jpeg','image/gif']" />
+                               name="fileMultiple"
+                               multiple
+                               ng-model="demo.fileMultiple"
+                               wiz-val-file
+                               wiz-val-file-types="['image/jpeg','image/gif']" />
 		</label>
 		<label>
 			Files (multiple 2 allowed):
 			<input type="file"
-						 name="fileMultiple"
-						 multiple
-						 ng-model="demo.fileMultiple"
-						 wiz-val-file
-						 wiz-val-file-number="2">
+                               name="fileMultiple"
+                               multiple
+                               ng-model="demo.fileMultiple"
+                               wiz-val-file
+                               wiz-val-file-number="2">
 		</label>
 		<label>
 			Require Other (e.g. Integer and Decimal):
 			<input type="text"
-						 name="requireOther"
-						 ng-model="demo.requireOther"
-						 wiz-val-require-other="[demoForm.integer.$valid, demoForm.decimal.$valid]" />
+                               name="requireOther"
+                               ng-model="demo.requireOther"
+                               wiz-val-require-other="[demoForm.integer.$valid, demoForm.decimal.$valid]" />
 		</label>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
