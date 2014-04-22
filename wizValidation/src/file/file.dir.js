@@ -9,8 +9,8 @@
 				fileTypes: '=wizValFileTypes',
 				// maximum file size in bytes
 				fileSize: '=wizValFileSize',
-			    // number of files integer
-                fileNumber: '=wizValFileNumber'
+				// number of files integer
+				fileNumber: '=wizValFileNumber'
 			},
 			link: function (scope, elem, attrs, ngModel) {
 
@@ -23,22 +23,16 @@
 					var validSize = true;
 					var validNumber = true;
 
-
 					// if file type attribute exists check it.
 					if (angular.isUndefined(scope.fileTypes)) scope.fileTypes = [];
 
-				    // if file number is not defined set it to one. 
-					if (angular.isUndefined(scope.fileNumber)) scope.fileNumber = 1;
-
-					if (files.length != validNumber) validNumber = false;
-
-					debugger;
+					// if file number is not defined set it to one. 
+					if (angular.isDefined(scope.fileNumber) && files.length > scope.fileNumber) validNumber = false;
 
 					for (var i = 0; i < files.length; i++) {
 						var file = files[i];
-					    // Check file type and size of each file
-                        
-						if (scope.fileTypes.indexOf(file.type) === -1 && scope.fileTypes.length>0) {
+						// Check file type and size of each file
+						if (scope.fileTypes.indexOf(file.type) === -1 && scope.fileTypes.length > 0) {
 							validType = false;
 						}
 						if (angular.isNumber(scope.fileSize) && file.size > scope.fileSize) {
@@ -52,7 +46,6 @@
 					ngModel.$setValidity('wizValFileTypes', validType);
 					ngModel.$setValidity('wizValFileSize', validSize);
 					ngModel.$setValidity('wizValFileNumber', validNumber);
-
 				}
 			}
 		};
