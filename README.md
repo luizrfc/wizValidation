@@ -93,26 +93,12 @@ If you enter "red", "orange" or "yellow" into this input the field will be inval
 Conversely if you are using the whitelist validator you must use one of the values in the array, anything else would be invalid.
 
 ###File upload validation
-The file validation field has a number of properties to turn on various features. 
-
-To validate the file upload HTML element add the tag
-
-          <input type="file" name="fileUpload" wiz-val-file/>
-
-Each subsequent validation option is added individually by individual attributes. 
-
-if the attributes are not added they are not checked. 
+The file validation field has 3 features that are used in conjunction with the `wiz-val-file` attribute directive:
 
 ####File type
-File types are specified by adding the wiz-val-file-type of the file being added. 
+File types are specified by adding `wiz-val-file-type` to the HTML element and providing it an array of acceptable MIME types. For example to check for jpeg and gif files use `wiz-val-file-types="['image/jpeg','image/gif']"`
 
-The file type is the MIME type of the file e.g. "image/jpeg". This is not the file extension. 
-
-Multiple file types can be checked by chaining extra mime types in an array e.g ['image/jpeg','image/gif'].
-
-This example checks for jpeg and gif files. 
-
-      <input type="file" name="file" wiz-val-file wiz-val-file-types="['image/jpeg','image/gif']"/>
+      <input type="file" name="file" wiz-val-file wiz-val-file-types="['image/jpeg','image/gif']" />
 
 ####File size
 To specify the maximum file size in bytes add the file size attribute e.g. 
@@ -120,9 +106,7 @@ To specify the maximum file size in bytes add the file size attribute e.g.
       <input type="file" name="file" wiz-val-file  wiz-val-file-size="1000000"/>
 
 ####File number
-When a file input field is set to "multiple" it is possible to upload multiple files. 
-
-To specify the number of files required add the file number attribute e.g. 
+When a file input field is set to "multiple" it is possible to upload multiple files. To specify the maximum number of files allowed add the file number attribute e.g. 
 
       <input type="file" name="file" multiple wiz-val-file  wiz-val-file-number="2">
 
