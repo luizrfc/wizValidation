@@ -5,7 +5,7 @@ describe('Date of birth validation', function () {
 	var month = today.getMonth();
 	var year = today.getFullYear() - 18;
 	var elem;
-	
+
 	beforeEach(function () {
 		browser.get('demo/index.html');
 		elem = element(by.model('demo.dateOfBirth'));

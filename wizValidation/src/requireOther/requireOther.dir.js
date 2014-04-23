@@ -31,7 +31,7 @@
 					if (typeof value === "undefined") value = "";
 					if (typeof scope.elementsToCheck !== "undefined") {
 						for (var i = 0; i < scope.elementsToCheck.length; i++) {
-							if (scope.elementsToCheck[i] === false || value === "") {
+							if (scope.elementsToCheck[i] === false) {
 								valid = false;
 								break;
 							}

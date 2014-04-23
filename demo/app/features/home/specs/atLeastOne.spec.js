@@ -1,4 +1,4 @@
-describe('At least one validation', function () {	
+describe('At least one validation', function () {
 	var elem1, elem2, elem3;
 
 	beforeEach(function () {

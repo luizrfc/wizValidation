@@ -9,7 +9,7 @@ describe('Whitelist validation', function () {
 		elem.sendKeys('red');
 		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 	});
-	
+
 	it('should allow words in the whitelist: blue', function () {
 		elem.sendKeys('orange');
 		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
