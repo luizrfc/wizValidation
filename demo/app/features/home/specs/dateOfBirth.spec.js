@@ -27,6 +27,6 @@ describe('Date of birth validation', function () {
 
 	it('should set invalid when younger than 18', function () {
 		elem.sendKeys((day + 1) + '/' + month + '/' + year);
-		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
+		expect(elem.getAttribute('class')).toMatch('ng-invalid');
 	});
 });
