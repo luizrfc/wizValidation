@@ -17,7 +17,7 @@ Example:
 
 
 ##Validators
-There are currently 14 validators available:
+There are currently 15 validators available:
 
 - integer
 - decimal
@@ -33,6 +33,7 @@ There are currently 14 validators available:
 - blacklist
 - whitelist
 - file
+- condition
 
 All the validators follow the same pattern of prefixing, as an example for **Zipcode**:
 
