@@ -1,13 +1,11 @@
 describe('Date of birth validation', function () {
 
-	var today = new Date();
-	var day = today.getDate();
-	var month = today.getMonth();
-	var year = today.getFullYear() - 18;
-	var elem;
+	var testDate, elem;
 
 	beforeEach(function () {
 		browser.get('demo/index.html');
+		testDate = new Date();
+		testDate.setFullYear(testDate.getFullYear() - 18);
 		elem = element(by.model('demo.dateOfBirth'));
 	});
 
@@ -16,17 +14,19 @@ describe('Date of birth validation', function () {
 	});
 
 	it('should allow birth dates of people 18', function () {
-		elem.sendKeys(day + '/' + month + '/' + year);
+		elem.sendKeys(testDate.getDate() + '/' + testDate.getMonth() + '/' + testDate.getFullYear());
 		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 
 	it('should allow birth dates of people over 18', function () {
-		elem.sendKeys((day - 1) + '/' + (month - 2) + '/' + (year - 3));
+		testDate.setDate(testDate.getDate() - 1);
+		elem.sendKeys(testDate.getDate() + '/' + testDate.getMonth() + '/' + testDate.getFullYear());
 		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 
 	it('should set invalid when younger than 18', function () {
-		elem.sendKeys((day + 1) + '/' + month + '/' + year);
+		testDate.setDate(testDate.getDate() + 1);
+		elem.sendKeys(testDate.getDate() + '/' + testDate.getMonth() + '/' + testDate.getFullYear());
 		expect(elem.getAttribute('class')).not.toMatch('ng-invalid');
 	});
 });
