@@ -36,84 +36,101 @@
 			Integer:
 		<input type="number" name="integer" ng-model="demo.integer" wiz-val-integer />
 		</label>
+		
 		<label>
 			Decimal:
 		<input type="number" step=".5" name="decimal" ng-model="demo.decimal" wiz-val-decimal />
 		</label>
+		
 		<label>
 			Decimal (3 places):
 		<input type="number" step=".5" name="decimalPlaces" ng-model="demo.decimalPlaces" wiz-val-decimal="3" />
 		</label>
+		
 		<label>
 			Postcode:
 		<input type="text" name="postcode" ng-model="demo.postcode" wiz-val-postcode />
 		</label>
+		
 		<label>
 			Zip code:
 		<input type="text" name="zipcode" ng-model="demo.zipcode" wiz-val-zipcode />
 		</label>
+		
 		<label>
 			Date of birth (18 and over):
 		<input type="date" name="dateOfBirth" ng-model="demo.dateOfBirth" wiz-val-date-of-birth="18" />
 		</label>
+		
 		<label>
 			At least one in group 1
 			<input type="text" name="atleastone1" ng-model="demo.atleastone1" wiz-val-at-least-one />
 			<input type="text" name="atleastone2" ng-model="demo.atleastone2" wiz-val-at-least-one />
 			<input type="text" name="atleastone3" ng-model="demo.atleastone3" wiz-val-at-least-one />
 		</label>
+		
 		<label>
 			At least one in group 2
 			<input type="text" name="atleastoneA" ng-model="demo.atleastoneA" wiz-val-at-least-one="group2" />
 			<input type="text" name="atleastoneB" ng-model="demo.atleastoneB" wiz-val-at-least-one="group2" />
 			<input type="text" name="atleastoneC" ng-model="demo.atleastoneC" wiz-val-at-least-one="group2" />
 		</label>
+		
 		<label>
 			Must equal group 1
 			<input type="text" name="equalTo1" ng-model="demo.equalTo1" wiz-val-equal-to />
 			<input type="text" name="equalTo2" ng-model="demo.equalTo2" wiz-val-equal-to />
 			<input type="text" name="equalTo3" ng-model="demo.equalTo3" wiz-val-equal-to />
 		</label>
+		
 		<label>
 			Must equal group 2
 			<input type="text" name="equalToA" ng-model="demo.equalToA" wiz-val-equal-to="group2" />
 			<input type="text" name="equalToB" ng-model="demo.equalToB" wiz-val-equal-to="group2" />
 			<input type="text" name="equalToC" ng-model="demo.equalToC" wiz-val-equal-to="group2" />
 		</label>
+		
 		<label>
 			Must not equal group 1
 			<input type="text" name="notEqualTo1" ng-model="demo.notEqualTo1" wiz-val-not-equal-to="group1" />
 			<input type="text" name="notEqualTo2" ng-model="demo.notEqualTo2" wiz-val-not-equal-to="group1" />
 			<input type="text" name="notEqualTo3" ng-model="demo.notEqualTo3" wiz-val-not-equal-to="group1" />
 		</label>
+		
 		<label>
 			Must not equal group 2
 			<input type="text" name="notEqualToA" ng-model="demo.notEqualToA" wiz-val-not-equal-to="group2" />
 			<input type="text" name="notEqualToB" ng-model="demo.notEqualToB" wiz-val-not-equal-to="group2" />
 			<input type="text" name="notEqualToC" ng-model="demo.notEqualToC" wiz-val-not-equal-to="group2" />
 		</label>
+		
 		<label>
 			Unique group 1
 			<input type="text" name="unique1" ng-model="demo.unique1" wiz-val-unique="group1" />
 			<input type="text" name="unique2" ng-model="demo.unique2" wiz-val-unique="group1" />
 			<input type="text" name="unique3" ng-model="demo.unique3" wiz-val-unique="group1" />
 		</label>
+		
 		<label>
 			Starts with "begin":
 		<input type="text" name="startsWith" ng-model="demo.startsWith" wiz-val-starts-with="'begin'" />
 		</label>
+		
 		<label>
 			Ends with "finish":
 		<input type="text" name="endsWith" ng-model="demo.endsWith" wiz-val-ends-with="'finish'" />
 		</label>
+		
 		<label>
 			Blacklist: "red", "orange", "yellow"
 		<input type="text" name="blacklist" ng-model="demo.blacklist" wiz-val-blacklist="['red', 'orange', 'yellow']" />
 		</label>
+		
 		<label>
 			White list: "red", "orange", "yellow"
 		<input type="text" name="whitelist" ng-model="demo.whitelist" wiz-val-whitelist="['red', 'orange', 'yellow']" />
 		</label>
+		
 		<label>
 			File (types jpeg, gif | size 200 bytes):
 		<input type="file"
@@ -123,6 +140,7 @@
 			wiz-val-file-types="['image/jpeg','image/gif']"
 			wiz-val-file-size="1000000" />
 		</label>
+		
 		<label>
 			File (multiple):
 		<input type="file"
@@ -132,6 +150,7 @@
 			wiz-val-file
 			wiz-val-file-types="['image/jpeg','image/gif']" />
 		</label>
+		
 		<label>
 			Files (multiple 2 allowed):
 		<input type="file"
@@ -141,9 +160,10 @@
 			wiz-val-file
 			wiz-val-file-number="2">
 		</label>
+
 		<label>Conditions:</label>
 		<ul>
-			<li>number must equal 24</li>
+			<li><button id="btn" ng-click="addDay()">{{today.getDate()}}</button> must equal 24</li>
 			<li>integer field must be valid</li>
 			<li>and this field must have "hello world" in it</li>
 		</ul>
@@ -153,8 +173,6 @@
 			wiz-val-conditions="[today.getDate() == 24,
 			                          demoForm.integer.$valid,
 			                          demo.conditions == 'hello world']" />
-
-		<button id="btn" ng-click="addDay()">{{today.getDate()}}</button>
 	</form>
 	<script src="app/libs/angular-1.2.15/angular.js"></script>
 	<script src="app/libs/wizValidation/wizValidation.min.js"></script>
