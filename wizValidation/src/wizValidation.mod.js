@@ -13,4 +13,5 @@
 	'wiz.validation.file',
 	'wiz.validation.blacklist',
 	'wiz.validation.whitelist',
-	'wiz.validation.requireOther']);
+	'wiz.validation.conditions'
+]);

@@ -13,10 +13,12 @@ angular.module('wiz.validation', [
 	'wiz.validation.file',
 	'wiz.validation.blacklist',
 	'wiz.validation.whitelist',
-	'wiz.validation.requireOther']);
+	'wiz.validation.conditions'
+]);
 
 angular.module('wiz.validation.atLeastOne', []);
 angular.module('wiz.validation.blacklist', []);
+angular.module('wiz.validation.conditions', []);
 angular.module('wiz.validation.dateOfBirth', []);
 
 angular.module('wiz.validation.decimal', []);
@@ -27,7 +29,6 @@ angular.module('wiz.validation.file', []);
 angular.module('wiz.validation.integer', []);
 angular.module('wiz.validation.notEqualTo', []);
 angular.module('wiz.validation.postcode', []);
-angular.module('wiz.validation.requireOther', []);
 angular.module('wiz.validation.startsWith', []);
 angular.module('wiz.validation.unique', []);
 angular.module('wiz.validation.whitelist', []);
@@ -256,6 +257,52 @@ angular.module('wiz.validation.blacklist')
 			}
 		};
 	});
+angular.module('wiz.validation.conditions')
+
+	.directive('wizValConditions', function () {
+		return {
+			restrict: 'A',
+			require: 'ngModel',
+			scope: {
+				conditions: '=wizValConditions'
+			},
+			link: function (scope, elem, attrs, ngModel) {
+
+				//For DOM -> model validation
+				ngModel.$parsers.unshift(function (value) {
+					return validate(value);
+				});
+
+				//For model -> DOM validation
+				ngModel.$formatters.unshift(function (value) {
+					return validate(value);
+				});
+
+				if (typeof scope.conditions !== "undefined") {
+					scope.$watch('conditions',
+						function () {
+							validate(ngModel.$viewValue);
+						}, true);
+				}
+
+				function validate(value) {
+					var valid = true;
+					if (typeof scope.conditions !== "undefined") {
+						for (var i = 0; i < scope.conditions.length; i++) {
+							if (scope.conditions[i] === false) {
+								valid = false;
+								break;
+							}
+						}
+					}
+
+					ngModel.$setValidity('wizValConditions', valid);
+					return value;
+				}
+			}
+		}
+	});
+
 angular.module('wiz.validation.dateOfBirth')
 
 	.directive('wizValDateOfBirth', function () {
@@ -576,52 +623,6 @@ angular.module('wiz.validation.postcode')
 				}
 			}
 		};
-	});
-
-angular.module('wiz.validation.requireOther')
-
-	.directive('wizValRequireOther', function () {
-		return {
-			restrict: 'A',
-			require: 'ngModel',
-			scope: {
-				elementsToCheck: '=wizValRequireOther'
-			},
-			link: function (scope, elem, attrs, ngModel) {
-
-				//For DOM -> model validation
-				ngModel.$parsers.unshift(function (value) {
-					return validate(value);
-				});
-
-				//For model -> DOM validation
-				ngModel.$formatters.unshift(function (value) {
-					return validate(value);
-				});
-
-				if (typeof scope.elementsToCheck !== "undefined") {
-					scope.$watch('elementsToCheck',
-						function () {
-							validate(ngModel.$viewValue);
-						}, true);
-				}
-
-				function validate(value) {
-					var valid = true;
-					if (typeof value === "undefined") value = "";
-					if (typeof scope.elementsToCheck !== "undefined") {
-						for (var i = 0; i < scope.elementsToCheck.length; i++) {
-							if (scope.elementsToCheck[i] === false) {
-								valid = false;
-								break;
-							}
-						}
-					}
-					ngModel.$setValidity('wizValRequireOther', valid);
-					return value;
-				}
-			}
-		}
 	});
 
 angular.module('wiz.validation.startsWith')

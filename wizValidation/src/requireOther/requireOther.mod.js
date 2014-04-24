@@ -1,1 +1,0 @@
-﻿angular.module('wiz.validation.requireOther', []);

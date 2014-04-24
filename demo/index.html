@@ -170,15 +170,23 @@
 					 wiz-val-file-number="2">
 	</label>
 	<label>
-		Require Other (e.g. Integer and Decimal):
+		Conditions:
+		<ul>
+			<li>number must equal 24</li>
+			<li>integer field must be valid</li>
+			<li>and this field must have "hello world" in it</li>
+		</ul>
 		<input type="text"
-					 name="requireOther"
-					 ng-model="demo.requireOther"
-					 wiz-val-require-other="[demoForm.integer.$valid, demoForm.decimal.$valid]"/>
+					 name="conditions"
+					 ng-model="demo.conditions"
+					 wiz-val-conditions="[today.getDate() == 24,
+			                          demoForm.integer.$valid,
+			                          demo.conditions == 'hello world']" />
 	</label>
+	<button id="btn" ng-click="addDay()">{{today.getDate()}}</button>
 </form>
 <script src="app/libs/angular-1.2.15/angular.js"></script>
-<script src="app/libs/wizValidation/wizValidation.min.js"></script>
+<script src="app/libs/wizValidation/wizValidation.js"></script>
 <script src="app/features/home/home.mod.js"></script>
 <script src="app/features/home/home.ctrl.js"></script>
 <script src="app/app.js"></script>
