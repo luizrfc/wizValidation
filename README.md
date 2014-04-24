@@ -1,7 +1,7 @@
 #ngValidation
 An AngularJS library for easier form validation.
 
-**v1.0.0**
+**v1.1.0**
 
 [![Build Status](https://travis-ci.org/GrumpyWizards/ngValidation.svg?branch=master)](https://travis-ci.org/GrumpyWizards/ngValidation)
 
