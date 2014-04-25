@@ -163,14 +163,14 @@
 
 		<label>Conditions:</label>
 		<ul>
-			<li><button id="btn" ng-click="addDay()">{{today.getDate()}}</button> must equal 24</li>
+			<li><button id="btn" ng-click="addDay()">{{testDate.getDate()}}</button> must equal {{today.getDate()}}</li>
 			<li>integer field must be valid</li>
 			<li>and this field must have "hello world" in it</li>
 		</ul>
 		<input type="text"
 			name="conditions"
 			ng-model="demo.conditions"
-			wiz-val-conditions="[today.getDate() == 24,
+			wiz-val-conditions="[testDate.getDate() == today.getDate(),
 			                          demoForm.integer.$valid,
 			                          demo.conditions == 'hello world']" />
 	</form>
