@@ -5,13 +5,13 @@ exports.config = {
 
 	multiCapabilities: [{
 		'browserName': 'chrome',
-		'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+		'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER + ': Chrome',
 		'build': process.env.TRAVIS_BUILD_NUMBER,
 		'name': 'ngValidation Protractor Tests'
 	},
 	{
 		'browserName': 'firefox',
-		'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+		'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER + ': Firefox',
 		'build': process.env.TRAVIS_BUILD_NUMBER,
 		'name': 'ngValidation Protractor Tests'
 	}],
