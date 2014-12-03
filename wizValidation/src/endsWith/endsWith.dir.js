@@ -21,7 +21,10 @@
 
 				function validate(value) {
 					var valid = false;
-					if (typeof value === "undefined") value = "";
+					if (typeof value === "undefined") {
+						value = "";
+					}
+
 					if (typeof scope.endsWith !== "undefined") {
 						valid = value.indexOf(scope.endsWith, value.length - scope.endsWith.length) !== -1;
 					}

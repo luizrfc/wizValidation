@@ -24,10 +24,14 @@
 					var validNumber = true;
 
 					// if file type attribute exists check it.
-					if (angular.isUndefined(scope.fileTypes)) scope.fileTypes = [];
+					if (angular.isUndefined(scope.fileTypes)) {
+						scope.fileTypes = [];
+					}
 
-					// if file number is not defined set it to one. 
-					if (angular.isDefined(scope.fileNumber) && files.length > scope.fileNumber) validNumber = false;
+					// if file number is not defined set it to one.
+					if (angular.isDefined(scope.fileNumber) && files.length > scope.fileNumber) {
+						validNumber = false;
+					}
 
 					for (var i = 0; i < files.length; i++) {
 						var file = files[i];
