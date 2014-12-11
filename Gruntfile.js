@@ -109,15 +109,6 @@ module.exports = function (grunt) {
 				options: {
 					configFile: "protractor.spec.conf.js" // Target-specific config file
 				}
-			},
-			saucelabs: {
-				options: {
-					configFile: "saucelabs.spec.conf.js", // Target-specific config file
-					args: {
-						sauceUser: process.env.SAUCE_USERNAME,
-						sauceKey: process.env.SAUCE_ACCESS_KEY
-					}
-				}
 			}
 		}
 	});
@@ -132,7 +123,6 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('build', 'Build site', ['concat', 'uglify', 'copy']);
 	grunt.registerTask('test', 'Local testing', ['build', 'connect:test', 'protractor_webdriver', 'protractor:local']);
-	grunt.registerTask('travis', 'Start site and run tests on SauceLabs', ['connect:test', 'protractor:saucelabs']);
 	grunt.registerTask('run', 'Build and run site', ['jshint', 'build', 'connect:open', 'watch']);
 	grunt.registerTask('default', 'Build and run site', ['run']);
 };
