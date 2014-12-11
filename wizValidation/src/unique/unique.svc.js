@@ -8,7 +8,10 @@
 		};
 
 		this.addValue = function (value) {
-			if (typeof value.value === "undefined") value.value = "";
+			if (typeof value.value === "undefined") {
+				value.value = "";
+			}
+
 			var existingValue = false;
 			for (var i = 0; i < this.values.length; i++) {
 				if (this.values[i].name === value.name) {
@@ -17,16 +20,25 @@
 					break;
 				}
 			}
-			if (!existingValue) this.values.push(value);
+
+			if (!existingValue) {
+				this.values.push(value);
+			}
 		};
 
 		this.isUnique = function (group) {
 			var isUnique = true;
 			var groupValues = $filter('filter')(this.values, { group: group }, true);
 			for (var i = 0; i < groupValues.length; i++) {
-				if (!isUnique) break;
+				if (!isUnique) {
+					break;
+				}
+
 				for (var j = 0; j < groupValues.length; j++) {
-					if (i === j) continue;
+					if (i === j) {
+						continue;
+					}
+
 					if (groupValues[i].value === groupValues[j].value) {
 						isUnique = false;
 						break;

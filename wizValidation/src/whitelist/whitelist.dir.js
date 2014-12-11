@@ -19,7 +19,10 @@
 
 				function validate(value) {
 					var valid = false;
-					if (typeof value === "undefined") value = "";
+					if (typeof value === "undefined") {
+						value = "";
+					}
+
 					if (typeof scope.whitelist !== "undefined") {
 						for (var i = scope.whitelist.length - 1; i >= 0; i--) {
 							if (value === scope.whitelist[i]) {

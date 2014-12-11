@@ -43,7 +43,10 @@ angular.module('wiz.validation.atLeastOne')
 		};
 
 		this.addValue = function (value) {
-			if (typeof value.value === "undefined") value.value = "";
+			if (typeof value.value === "undefined") {
+				value.value = "";
+			}
+
 			var existingValue = false;
 			for (var i = 0; i < this.values.length; i++) {
 				if (this.values[i].name === value.name) {
@@ -52,7 +55,9 @@ angular.module('wiz.validation.atLeastOne')
 					break;
 				}
 			}
-			if (!existingValue) this.values.push(value);
+			if (!existingValue) {
+				this.values.push(value);
+			}
 		};
 
 		this.isEmpty = function (group) {
@@ -78,7 +83,10 @@ angular.module('wiz.validation.equalTo')
 		};
 
 		this.addValue = function (value) {
-			if (typeof value.value === "undefined") value.value = "";
+			if (typeof value.value === "undefined") {
+				value.value = "";
+			}
+
 			var existingValue = false;
 			for (var i = 0; i < this.values.length; i++) {
 				if (this.values[i].name === value.name) {
@@ -87,7 +95,9 @@ angular.module('wiz.validation.equalTo')
 					break;
 				}
 			}
-			if (!existingValue) this.values.push(value);
+			if (!existingValue) {
+				this.values.push(value);
+			}
 		};
 
 		this.isEqual = function (group) {
@@ -112,7 +122,10 @@ angular.module('wiz.validation.notEqualTo')
 		};
 
 		this.addValue = function (value) {
-			if (typeof value.value === "undefined") value.value = "";
+			if (typeof value.value === "undefined") {
+				value.value = "";
+			}
+
 			var existingValue = false;
 			for (var i = 0; i < this.values.length; i++) {
 				if (this.values[i].name === value.name) {
@@ -121,7 +134,9 @@ angular.module('wiz.validation.notEqualTo')
 					break;
 				}
 			}
-			if (!existingValue) this.values.push(value);
+			if (!existingValue) {
+				this.values.push(value);
+			}
 		};
 
 		this.isEqual = function (group) {
@@ -146,7 +161,10 @@ angular.module('wiz.validation.unique')
 		};
 
 		this.addValue = function (value) {
-			if (typeof value.value === "undefined") value.value = "";
+			if (typeof value.value === "undefined") {
+				value.value = "";
+			}
+
 			var existingValue = false;
 			for (var i = 0; i < this.values.length; i++) {
 				if (this.values[i].name === value.name) {
@@ -155,16 +173,25 @@ angular.module('wiz.validation.unique')
 					break;
 				}
 			}
-			if (!existingValue) this.values.push(value);
+
+			if (!existingValue) {
+				this.values.push(value);
+			}
 		};
 
 		this.isUnique = function (group) {
 			var isUnique = true;
 			var groupValues = $filter('filter')(this.values, { group: group }, true);
 			for (var i = 0; i < groupValues.length; i++) {
-				if (!isUnique) break;
+				if (!isUnique) {
+					break;
+				}
+
 				for (var j = 0; j < groupValues.length; j++) {
-					if (i === j) continue;
+					if (i === j) {
+						continue;
+					}
+
 					if (groupValues[i].value === groupValues[j].value) {
 						isUnique = false;
 						break;
@@ -204,7 +231,11 @@ angular.module('wiz.validation.atLeastOne')
 
 				function validate() {
 					var valid = false;
-					if (!wizAtLeastOneSvc.isEmpty(attrs.wizValAtLeastOne)) valid = true;
+
+					if (!wizAtLeastOneSvc.isEmpty(attrs.wizValAtLeastOne)) {
+						valid = true;
+					}
+
 					ngModel.$setValidity('wizValAtLeastOne', valid);
 				}
 
@@ -242,7 +273,11 @@ angular.module('wiz.validation.blacklist')
 
 				function validate(value) {
 					var valid = true;
-					if (typeof value === "undefined") value = "";
+
+					if (typeof value === "undefined") {
+						value = "";
+					}
+
 					if (typeof scope.blacklist !== "undefined") {
 						for (var i = scope.blacklist.length - 1; i >= 0; i--) {
 							if (value === scope.blacklist[i]) {
@@ -300,7 +335,7 @@ angular.module('wiz.validation.conditions')
 					return value;
 				}
 			}
-		}
+		};
 	});
 
 angular.module('wiz.validation.dateOfBirth')
@@ -410,7 +445,10 @@ angular.module('wiz.validation.endsWith')
 
 				function validate(value) {
 					var valid = false;
-					if (typeof value === "undefined") value = "";
+					if (typeof value === "undefined") {
+						value = "";
+					}
+
 					if (typeof scope.endsWith !== "undefined") {
 						valid = value.indexOf(scope.endsWith, value.length - scope.endsWith.length) !== -1;
 					}
@@ -493,10 +531,14 @@ angular.module('wiz.validation.file')
 					var validNumber = true;
 
 					// if file type attribute exists check it.
-					if (angular.isUndefined(scope.fileTypes)) scope.fileTypes = [];
+					if (angular.isUndefined(scope.fileTypes)) {
+						scope.fileTypes = [];
+					}
 
-					// if file number is not defined set it to one. 
-					if (angular.isDefined(scope.fileNumber) && files.length > scope.fileNumber) validNumber = false;
+					// if file number is not defined set it to one.
+					if (angular.isDefined(scope.fileNumber) && files.length > scope.fileNumber) {
+						validNumber = false;
+					}
 
 					for (var i = 0; i < files.length; i++) {
 						var file = files[i];
@@ -539,8 +581,10 @@ angular.module('wiz.validation.integer')
 
 				function validate(value) {
 					var valid = true;
-					if (angular.isDefined(value) && value.length > 0)
+					if (angular.isDefined(value) && value.length > 0) {
 						valid = /^-?[0-9]+$/.test(value);
+					}
+
 					ngModel.$setValidity('wizValInteger', valid);
 					return value;
 				}
@@ -647,7 +691,10 @@ angular.module('wiz.validation.startsWith')
 				});
 
 				function validate(value) {
-					if (typeof value === "undefined") value = "";
+					if (typeof value === "undefined") {
+						value = "";
+					}
+
 					var valid = value.lastIndexOf(scope.startsWith, 0) === 0;
 					ngModel.$setValidity('wizValStartsWith', valid);
 					return value;
@@ -723,7 +770,10 @@ angular.module('wiz.validation.whitelist')
 
 				function validate(value) {
 					var valid = false;
-					if (typeof value === "undefined") value = "";
+					if (typeof value === "undefined") {
+						value = "";
+					}
+
 					if (typeof scope.whitelist !== "undefined") {
 						for (var i = scope.whitelist.length - 1; i >= 0; i--) {
 							if (value === scope.whitelist[i]) {
@@ -759,8 +809,9 @@ angular.module('wiz.validation.zipcode')
 
 				function validate(value) {
 					var valid = true;
-					if (angular.isDefined(value) && value.length > 0)
+					if (angular.isDefined(value) && value.length > 0) {
 						valid = /(^\d{5}-?\d{4}$)|(^\d{5}$)/.test(value);
+					}
 
 					ngModel.$setValidity('wizValZipcode', valid);
 					return value;

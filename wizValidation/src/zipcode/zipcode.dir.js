@@ -18,8 +18,9 @@
 
 				function validate(value) {
 					var valid = true;
-					if (angular.isDefined(value) && value.length > 0)
+					if (angular.isDefined(value) && value.length > 0) {
 						valid = /(^\d{5}-?\d{4}$)|(^\d{5}$)/.test(value);
+					}
 
 					ngModel.$setValidity('wizValZipcode', valid);
 					return value;

@@ -20,7 +20,10 @@
 				});
 
 				function validate(value) {
-					if (typeof value === "undefined") value = "";
+					if (typeof value === "undefined") {
+						value = "";
+					}
+
 					var valid = value.lastIndexOf(scope.startsWith, 0) === 0;
 					ngModel.$setValidity('wizValStartsWith', valid);
 					return value;
