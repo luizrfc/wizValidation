@@ -1,7 +1,7 @@
 #ngValidation
 An AngularJS library for easier form validation.
 
-**v1.1.1**
+**v1.2.0**
 
 ##"Install" it
 1. Grab the `wizValidation.min.js` file and drop it into your application
