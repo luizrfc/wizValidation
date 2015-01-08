@@ -26,9 +26,11 @@
     ".gitignore",
     "bower.json",
     "gulpfile.js",
-    "gruntfile.js",
+    "Gruntfile.js",
     "package.json",
     "demo",
+    "wizValidation/src",
+    "protractor.spec.conf.js",
     "README.md",
     "LICENSE"
   ]
