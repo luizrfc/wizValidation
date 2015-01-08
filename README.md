@@ -3,8 +3,8 @@ An AngularJS library for easier form validation.
 
 **v1.2.0**
 
-##"Install" it
-1. Grab the `wizValidation.min.js` file and drop it into your application
+##Install
+1. `bower install wiz-validation`
 2. Add `'wiz.validation'` as a required module
 
 Example:
