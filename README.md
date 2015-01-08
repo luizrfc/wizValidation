@@ -1,4 +1,4 @@
-#ngValidation
+#wizValidation
 An AngularJS library for easier form validation.
 
 **v1.2.0**
